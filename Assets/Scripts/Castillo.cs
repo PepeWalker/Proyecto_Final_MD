@@ -12,6 +12,7 @@ public class Castillo : Unidades
 
     public MotorBatalla m; //temporal
 
+    
     public List<GameObject> lUnidadesDisponibles, lUnidadesActivas;
 
     // Start is called before the first frame update
@@ -76,7 +77,17 @@ public class Castillo : Unidades
 
 
     }
-
+    public void GenerarUnidad(int i,Castillo u)
+    {
+        if (lUnidadesActivas.Count < limiteUnidad)
+        {
+            if(oro >= u.coste)
+            {
+                decreaseGold(u.coste);
+                lUnidadesActivas.Add(Instantiate(m.lpUnidades[i], spawnPoint));
+            }
+        }
+    }
 
     //}
     //else if (Input.GetKeyDown("1"))

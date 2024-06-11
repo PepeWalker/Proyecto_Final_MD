@@ -39,18 +39,7 @@ public class Unidades : MonoBehaviour
     {
         //1 comprobar si esta muerto
         //Caso positivo llamar funcion para animacion de muerte y reiniciar unidad.
-        muerto = isDeath();
-
-        if (muerto)
-        {
-            //Crea metodo de muerte
-            //Deberia activar efecto de muerte desactivarse y seguir con Reset
-            //Muerte();
-            Debug.Log("Unidad Muerta!");
-            this.gameObject.SetActive(false); //forma temporal!
-            //Llamamos al reset.
-            ResetUnit();
-        }
+        CheckDeath();
         
         //2 Buscar enemigo mas cercano y comprobar si esta a alcance para atacar
         getCloseTarget(this.esJugador);
@@ -78,6 +67,22 @@ public class Unidades : MonoBehaviour
     
 
 
+    }
+
+    public virtual void CheckDeath()
+    {
+        muerto = isDeath();
+
+        if (muerto)
+        {
+            //Crea metodo de muerte
+            //Deberia activar efecto de muerte desactivarse y seguir con Reset
+            //Muerte();
+            Debug.Log("Unidad Muerta!");
+            this.gameObject.SetActive(false); //forma temporal!
+            //Llamamos al reset.
+            ResetUnit();
+        }
     }
 
     //Animacion de muerte, y reiniciar unidad, toda la vida, posicion de spawn etc.
@@ -181,7 +186,7 @@ public class Unidades : MonoBehaviour
 
     //Funcion atacar
     
-    private IEnumerator AtacarIE() 
+    internal IEnumerator AtacarIE() 
     {
         //Hacer o corrutina con cada ataque, o una variable tiempo que se vaya reseteando y comprobando con cada ataque.
         //Llamar animacion ataque efectos etc.
@@ -209,7 +214,7 @@ public class Unidades : MonoBehaviour
 
     }
 
-    private float getVida() 
+    internal float getVida() 
     {
         return vida;    
     }

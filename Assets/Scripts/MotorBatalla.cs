@@ -8,10 +8,11 @@ using UnityEngine;
 public class MotorBatalla : MonoBehaviour
 {
 
-    public List<GameObject> lpUnidades;
+    public List<GameObject> lpUnidades; //lista player?
 
-    public List<Unidades> lUnidades;
+    public List<Unidades> lUnidades; //Lista unidades?
 
+    public int nivelCastilloMax;
 
     public Castillo castilloIA, castilloJugador;
 
@@ -41,6 +42,18 @@ public class MotorBatalla : MonoBehaviour
        
     }
 
+    public void LevelUpCastillo(Castillo c)
+    {
+        if(c.nivel < nivelCastilloMax)
+        {
+            c.levelUp();
+            c.nivel++;
+        }
+        else
+        {
+            Debug.Log("Nivel maximo alcanzado.");
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -53,14 +66,11 @@ public class MotorBatalla : MonoBehaviour
         }
 
         //subir nivel
-        if (Input.GetKeyDown("q") && (castilloJugador.nivel < 3))
+        if (Input.GetKeyDown("q"))
         {
-            castilloJugador.levelUp();
-            castilloJugador.nivel++;
+            LevelUpCastillo(castilloJugador);
         }
-        else if(Input.GetKeyDown("q"))
-            Debug.Log("Nivel maximo alcanzado.");
-
+        
 
 
         ////Generar unidad 1
