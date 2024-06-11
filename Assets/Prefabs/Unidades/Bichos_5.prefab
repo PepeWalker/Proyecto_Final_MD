@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6188993491509359773
 Transform:
   m_ObjectHideFlags: 0
@@ -50,8 +50,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -112,7 +110,7 @@ MonoBehaviour:
   origenSpawn: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
-  enemyTag: Enemigo
   andando: 0
   atacando: 0
+  recibiendoAtaque: 0
   muerto: 0

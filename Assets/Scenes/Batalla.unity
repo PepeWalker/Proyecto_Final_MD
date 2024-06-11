@@ -122,74 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &4287957
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4287960}
-  - component: {fileID: 4287959}
-  - component: {fileID: 4287958}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &4287958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4287957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &4287959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4287957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &4287960
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4287957}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &66676077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,9 +1310,9 @@ MonoBehaviour:
   oro: 150
   spawnPoint: {fileID: 0}
   m: {fileID: 1567021142}
-  lUnidadesDisponibles:
-  - {fileID: 9029183377340884386, guid: e961e6dd1261e3f4281d5b7ee3538089, type: 3}
+  lUnidadesDisponibles: []
   lUnidadesActivas: []
+  lUnidadesInstaciadas: []
 --- !u!1 &784093082
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,11 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc239c623271aa4bb10cbcfcd99acde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lpUnidades:
-  - {fileID: 9029183377340884386, guid: e961e6dd1261e3f4281d5b7ee3538089, type: 3}
-  - {fileID: 3275917754651345523, guid: 9d6eef6dcb4c91847b45ce148085ea00, type: 3}
-  - {fileID: 3675687609785833620, guid: 09bcf799271b8ad41953ba8d83295bd7, type: 3}
-  lUnidades: []
+  nivelCastilloMax: 0
   castilloIA: {fileID: 756605792}
   castilloJugador: {fileID: 1568922612}
   nivelOro: 5
@@ -4976,7 +4904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029183377340884386, guid: e961e6dd1261e3f4281d5b7ee3538089, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9029183377340884386, guid: e961e6dd1261e3f4281d5b7ee3538089, type: 3}
       propertyPath: m_TagString
@@ -5063,6 +4991,10 @@ PrefabInstance:
       value: Bichos_4
       objectReference: {fileID: 0}
     - target: {fileID: 3275917754651345523, guid: 9d6eef6dcb4c91847b45ce148085ea00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275917754651345523, guid: 9d6eef6dcb4c91847b45ce148085ea00, type: 3}
       propertyPath: m_TagString
       value: Enemigo
       objectReference: {fileID: 0}
@@ -5079,6 +5011,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1567021143}
     m_Modifications:
+    - target: {fileID: 3291627177041982296, guid: 228b843a27566ee4da2e9dd0f3868f76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.42
+      objectReference: {fileID: 0}
     - target: {fileID: 3291627177041982297, guid: 228b843a27566ee4da2e9dd0f3868f76, type: 3}
       propertyPath: m_TagString
       value: SpawnPoint
@@ -5253,7 +5189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3416320692733172931, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5276,6 +5212,10 @@ PrefabInstance:
     - target: {fileID: 3675687609785833620, guid: 09bcf799271b8ad41953ba8d83295bd7, type: 3}
       propertyPath: m_Name
       value: Bichos_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675687609785833620, guid: 09bcf799271b8ad41953ba8d83295bd7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3675687609785833620, guid: 09bcf799271b8ad41953ba8d83295bd7, type: 3}
       propertyPath: m_TagString
@@ -5339,7 +5279,6 @@ SceneRoots:
   - {fileID: 619429673}
   - {fileID: 1567021143}
   - {fileID: 675894860}
-  - {fileID: 4287960}
   - {fileID: 1940865896365625711}
   - {fileID: 2277479191315620573}
   - {fileID: 7314087669560884813}
