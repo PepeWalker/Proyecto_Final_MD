@@ -13,32 +13,20 @@ public class CameraController : MonoBehaviour
     public float minY = 5.0f;    // Límite mínimo en el eje Y
     public float maxY = 30.0f;   // Límite máximo en el eje Y
 
-    private Transform fondoTransform;  // Transform del objeto con la etiqueta "Fondo"
+    [SerializeField] 
+    private Transform lookAtObject;  // Transform del objeto con la etiqueta "Fondo"
     private Renderer fondoRenderer;    // Renderer del objeto con la etiqueta "Fondo"
 
     void Start()
     {
-        // Buscar el objeto con la etiqueta "Fondo"
-        //Para que la camara siga siempre la "accion"
-        GameObject fondo = GameObject.FindGameObjectWithTag("Camino");
-        if (fondo != null)
-        {
-            fondoTransform = fondo.transform;
-            fondoRenderer = fondo.GetComponent<Renderer>();
-            if (fondoRenderer == null)
-            {
-                Debug.LogError("El objeto 'Fondo' no tiene un componente Renderer.");
-            }
-        }
-        else
-        {
-            Debug.LogError("No se encontró ningún objeto con la etiqueta 'Fondo'");
-        }
+        if (lookAtObject == null)
+            lookAtObject = GameObject.Find("lookAtObject").transform;
+                
     }
 
     void Update()
     {
-        if (fondoTransform == null || fondoRenderer == null) return;
+        
 
         // Obtener la entrada del usuario
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -71,18 +59,6 @@ public class CameraController : MonoBehaviour
         // Asignar la nueva posición a la cámara
         transform.position = newPosition;
 
-        // Calcular la posición en el objeto "Fondo" que debe mirar la cámara
-        Bounds fondoBounds = fondoRenderer.bounds;
-        float fondoWidth = fondoBounds.size.x;
-
-        // Calcular la posición a lo largo del ancho del "Fondo"
-        float t = (newPosition.x - minX) / (maxX - minX);  // Normalizar la posición X de la cámara
-        Vector3 lookAtPosition = new Vector3(fondoBounds.min.x + t * fondoWidth, fondoTransform.position.y, fondoTransform.position.z);
-
-        // Ajustar la rotación de la cámara para mirar hacia la posición calculada en el objeto "Fondo"
-        Vector3 directionToLookAt = lookAtPosition - transform.position;
-        Quaternion rotationToLookAt = Quaternion.LookRotation(directionToLookAt);
-        Vector3 eulerRotationToLookAt = rotationToLookAt.eulerAngles;
-        transform.rotation = Quaternion.Euler(eulerRotationToLookAt.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.LookAt(lookAtObject);
     }
 }
