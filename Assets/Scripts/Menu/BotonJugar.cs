@@ -31,7 +31,7 @@ public class BotonJugar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (buttonText != null)
         {
-            buttonText.fontStyle = FontStyles.Bold;
+            buttonText.fontSize += 3;
         }
         if (audioSource != null && hoverSound != null)
         {
@@ -43,7 +43,7 @@ public class BotonJugar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (buttonText != null)
         {
-            buttonText.fontStyle = FontStyles.Normal;
+            buttonText.fontSize -= 3;
         }
     }
 

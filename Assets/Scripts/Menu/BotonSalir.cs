@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-public class BotonOpciones : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class BotonSalir : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     
         // Start is called before the first frame update
