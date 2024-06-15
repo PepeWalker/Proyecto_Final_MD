@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    //Los limites hay poder cambiar segun escenario
+
+
     public float speed = 10.0f;  // Velocidad de movimiento de la cámara
     public float verticalSpeed = 5.0f;  // Velocidad de movimiento vertical
     public float minX = 16.0f;   // Límite mínimo en el eje X

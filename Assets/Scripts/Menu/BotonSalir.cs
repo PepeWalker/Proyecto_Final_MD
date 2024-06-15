@@ -6,28 +6,12 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-public class BotonSalir : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class BotonSalir : BotonMenu
 {
     
-        // Start is called before the first frame update
+      
 
-    public TextMeshProUGUI buttonText;
-    public AudioSource audioSource;
-    public AudioClip strikeOutSound;
-    public AudioClip hoverSound; //Sonido de lapiz rayado del texto
-    public GameObject textureObject; //textura de tachado
-
-    void Start()
-    {
-        //la textura tachado debe estar desactivada hasta que se seleccione el boton
-        if (textureObject != null)
-        {
-            textureObject.SetActive(false);
-        }
-        
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
         if (buttonText != null)
         {
@@ -40,17 +24,9 @@ public class BotonSalir : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (buttonText != null)
-        {
-            buttonText.fontStyle = FontStyles.Normal;
+    
 
-            buttonText.fontSize -= 3;
-        }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         if (textureObject != null)
         {

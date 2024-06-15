@@ -6,40 +6,13 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-public class BotonJugar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class BotonJugar : BotonMenu
 {
+
+
     
-        // Start is called before the first frame update
 
-        public TextMeshProUGUI buttonText;
-    public AudioSource audioSource;
-    public AudioClip strikeOutSound;
-    public AudioClip hoverSound; //Sonido de lapiz rayado del texto
-    public GameObject textureObject; //textura de tachado
-
-    void Start()
-    {
-        //la textura tachado debe estar desactivada hasta que se seleccione el boton
-        if (textureObject != null)
-        {
-            textureObject.SetActive(false);
-        }
-        
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (buttonText != null)
-        {
-            buttonText.fontSize += 3;
-        }
-        if (audioSource != null && hoverSound != null)
-        {
-            audioSource.PlayOneShot(hoverSound);
-        }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
+    public override void OnPointerExit(PointerEventData eventData)
     {
         if (buttonText != null)
         {
@@ -47,13 +20,19 @@ public class BotonJugar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         if (textureObject != null)
         {
             textureObject.SetActive(true); //No funciona, pilla la textura del textmeshpro, nose
             audioSource.PlayOneShot(strikeOutSound);
         }
+    }
+
+    public override void PlaySoundChangeScene()
+    {
+        
+        audioSource.PlayOneShot(strikeOutSound);
     }
 
 }
