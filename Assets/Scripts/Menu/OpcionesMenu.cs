@@ -27,6 +27,7 @@ public class OpcionesMenu : MonoBehaviour
 
         //Generamos lista de string con las resoluciones y la rellenamos con las resoluciones que nos da unity
         // estaria bien poder decirle que resoluciones queremos aportar, para que no genere lista tan grande.
+        // si no se, pongo x resoluciones predeterminadas y ya
         List<string> opciones = new List<string>();
 
         int resolucionActualIndex = 0;
