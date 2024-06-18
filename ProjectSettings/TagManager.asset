@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemigo
+  - Fondo
+  - TextoOro
+  - Camino
+  - Castillo
+  - Unidad_1
+  - Unidad_3
+  - Unidad_2
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -11,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Fondo Escenario
   - 
   - 
   - 
