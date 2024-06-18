@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 using UnityEngine.UI;
+
+using UnityEngine.SceneManagement;
+
 
 public class BotonMenu : MonoBehaviour
 {
@@ -20,28 +22,7 @@ public class BotonMenu : MonoBehaviour
 
 
 
-    public void Tachar (Image i)
-    {
-        StartCoroutine(ICorrTachado(i));
-    }
-
-    public float t;
-    IEnumerator ICorrTachado (Image i)
-    {
-        t = 0;
-        i.color = Color.white;
-        while (t<1 )
-        {
-           i.fillAmount = t;
-            t+= Time.deltaTime*5;
-
-            yield return null;
-
-        }
-        t=0;
-        yield return null;
-
-    }
+   
 
 
     // Aumenta el tamanio del texto para luego reducirlo, dar retroalimentacion de donde esta el raton
@@ -78,7 +59,7 @@ public class BotonMenu : MonoBehaviour
 
 
     //reducir tamanio texto cuando sale el raton 
-    public virtual void OnExitReduceSizeText(TextMeshProUGUI t)
+    public  void OnExitReduceSizeText(TextMeshProUGUI t)
     {
         if (t != null)
         {
@@ -87,7 +68,7 @@ public class BotonMenu : MonoBehaviour
     }
 
     //poner el texto normal
-    public virtual void OnExitNormalStyleText(TextMeshProUGUI t)
+    public  void OnExitNormalStyleText(TextMeshProUGUI t)
     {
         if (t != null)
         {
@@ -95,7 +76,7 @@ public class BotonMenu : MonoBehaviour
         }
     }
 
-    public virtual void OnClick(GameObject g)
+    public  void OnClick(GameObject g)
     {
         if (g != null)
         {
@@ -104,10 +85,60 @@ public class BotonMenu : MonoBehaviour
         }
     }
 
-    public virtual void PlaySoundChangeScene()
+    public  void PlaySoundChangeScene()
     {
         
         audioSource.PlayOneShot(changeSceneSound);
     }
+
+    public void PlaySoundStrikeOut()
+    {
+        audioSource.PlayOneShot(strikeOutSound);
+    }
+
+
+    public void PlayGame(Image i)
+    {
+        //cambia escena al en buildsettings, el indice 1, por ahora escena batalla
+        Debug.Log("Cambiando a escena Indice 1");
+
+        StartCoroutine(ICorrCambioEscenaJuego(i));
+    }
+
+    public float t; //tiempo del strikeOut
+    float strikeOutTime ;
+    IEnumerator ICorrCambioEscenaJuego(Image i)
+    {
+        t = 0;
+        strikeOutTime = strikeOutSound.length;
+        i.color = Color.white;
+
+        PlaySoundStrikeOut();
+
+        while (t < strikeOutTime)
+        {
+            t += Time.deltaTime * 0.03f;
+            float smoothValue = Mathf.Lerp(0f, 1f, t / strikeOutTime);
+            i.fillAmount = smoothValue;
+        }
+        t = 0;
+        
+        yield return new WaitForSeconds(strikeOutTime+1);
+
+
+        //llama a otra funcion cambio de escena, porque ahi metere efecto para cambio de escena
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+    }
+
+    
+
+    public void QuitGame()
+    {
+        Debug.Log("Saliendo del Juego!");
+        Application.Quit();
+    }
+
 
 }
