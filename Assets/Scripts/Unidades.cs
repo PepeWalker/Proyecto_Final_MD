@@ -6,7 +6,7 @@ using UnityEngine;
 public class Unidades : MonoBehaviour
 {
 
-    public float vida, ataque, defensa, velocidad, alcance, velocidadAtaque, distanciaAlObjetivo;
+    public float vida, vidaMax, ataque, defensa, velocidad, alcance, velocidadAtaque, distanciaAlObjetivo;
 
     public float coste;
     public bool esJugador;

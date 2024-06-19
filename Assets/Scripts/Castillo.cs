@@ -54,29 +54,6 @@ public class Castillo : Unidades
     void Update()
     {
 
-        //Para generar unidad,
-        // FALTA AÑADIR que al pulsar el boton esté deshabilitado X tiempo de cooldown
-
-        //Generar Unidad 1
-        if (Input.GetKeyDown("1") )
-        {
-            GenerarUnidad(0);
-
-        }
-        //Generar Unidad 2
-        if (Input.GetKeyDown("2"))
-        {
-            GenerarUnidad(1);
-        }
-        //Generar Unidad 3
-        if (Input.GetKeyDown("3"))
-        {
-            GenerarUnidad(2);
-
-        }
-
-
-
     }
 
     //funcion para genear unidad en funcion del i introducido.
