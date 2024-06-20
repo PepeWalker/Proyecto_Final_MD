@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7258586615745801288}
   m_Layer: 0
   m_Name: Bichos_3
-  m_TagString: Unidad_1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   ataque: 10
   defensa: 0
   velocidad: 3
-  alcance: 1
+  alcance: 1.5
   velocidadAtaque: 2
   distanciaAlObjetivo: 1
   coste: 40

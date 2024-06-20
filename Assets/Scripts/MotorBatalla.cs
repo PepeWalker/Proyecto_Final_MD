@@ -48,6 +48,9 @@ public class MotorBatalla : MonoBehaviour
         {
             timer = 0f;
             castilloJugador.increaseGold(nivelOro * castilloJugador.nivel);
+
+            //Temporal
+            //castilloIA.increaseGold(nivelOro * castilloIA.nivel);
         }
     }
 

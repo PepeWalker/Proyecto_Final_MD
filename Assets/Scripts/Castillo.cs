@@ -35,7 +35,8 @@ public class Castillo : Unidades
 
         //coger entre los GO hijos cual tiene la tag Spawnpoint para establecerlo
         //por si añado mas hijo en el futuro 
-        foreach (Transform child in transform)
+        // LO METO A MANO DESDE LA INTERFAZ
+        /*foreach (Transform child in transform)
         {
             if (child.CompareTag("SpawnPoint"))
             {
@@ -43,7 +44,7 @@ public class Castillo : Unidades
                 break; // sale del bucle al encontrar el objecto con la etiqueta "SpawnPoint"
             }
         }
-
+        */
 
     }
 
