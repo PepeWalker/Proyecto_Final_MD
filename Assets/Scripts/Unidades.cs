@@ -199,15 +199,13 @@ public class Unidades : MonoBehaviour
         Debug.Log("Empezando a ATACAR");
         Unidades unidadTarget = target.GetComponent<Unidades>();
 
-        while (!muerto || !unidadTarget.isDeath())
+        while (!muerto && !unidadTarget.isDeath())
         {
                     Debug.Log("Atacando!");
                     unidadTarget.RecibirAtaque(ataque);
 
-                    if(!unidadTarget.isDeath() ) {
-                        Debug.Log("Esperando para volver a atacar!");
-                        yield return new WaitForSeconds(velocidadAtaque);
-                    }
+                    Debug.Log("Esperando para volver a atacar!");
+                    yield return new WaitForSeconds(velocidadAtaque);
                 
         }
 
