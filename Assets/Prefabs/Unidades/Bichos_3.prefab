@@ -100,13 +100,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 25
   vidaMax: 25
-  ataque: 10
+  ataque: 6
   defensa: 0
   velocidad: 3
   alcance: 1.8
   velocidadAtaque: 1.8
   distanciaAlObjetivo: 1
-  coste: 40
+  coste: 25
   esJugador: 1
   target: {fileID: 0}
   origenSpawn: {x: 0, y: 0, z: 0}

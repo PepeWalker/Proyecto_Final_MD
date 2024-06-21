@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6188993491509359773}
   - component: {fileID: 1470716976082137389}
   - component: {fileID: 7236996113122952147}
+  - component: {fileID: -396212511860764099}
   m_Layer: 0
   m_Name: Bichos_5
   m_TagString: Player
@@ -99,13 +100,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 15
   vidaMax: 15
-  ataque: 6
+  ataque: 8
   defensa: 0
   velocidad: 2.5
   alcance: 10
   velocidadAtaque: 1
   distanciaAlObjetivo: 10
-  coste: 50
+  coste: 60
   esJugador: 1
   target: {fileID: 0}
   origenSpawn: {x: 0, y: 0, z: 0}
@@ -115,3 +116,25 @@ MonoBehaviour:
   atacando: 0
   recibiendoAtaque: 0
   muerto: 0
+  anim: {fileID: -396212511860764099}
+--- !u!95 &-396212511860764099
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675687609785833620}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c47df38ce5ccfb445aa6f36aa73cb362, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
