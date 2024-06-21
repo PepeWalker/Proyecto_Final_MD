@@ -103,8 +103,8 @@ MonoBehaviour:
   ataque: 10
   defensa: 0
   velocidad: 3
-  alcance: 1.5
-  velocidadAtaque: 2
+  alcance: 1.8
+  velocidadAtaque: 1.8
   distanciaAlObjetivo: 1
   coste: 40
   esJugador: 1
@@ -112,10 +112,11 @@ MonoBehaviour:
   origenSpawn: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
-  andando: 0
+  andando: 1
   atacando: 0
   recibiendoAtaque: 0
   muerto: 0
+  anim: {fileID: -7258586615745801288}
 --- !u!95 &-7258586615745801288
 Animator:
   serializedVersion: 5

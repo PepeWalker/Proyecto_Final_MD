@@ -17,7 +17,7 @@ public class Castillo : Unidades
     public List<Unidades> lUnidadesInstaciadas;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
 
         
@@ -52,9 +52,9 @@ public class Castillo : Unidades
 
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-
+       
     }
 
     //funcion para genear unidad en funcion del i introducido.

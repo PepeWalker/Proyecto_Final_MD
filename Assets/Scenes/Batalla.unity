@@ -2182,13 +2182,14 @@ MonoBehaviour:
   atacando: 0
   recibiendoAtaque: 0
   muerto: 0
+  anim: {fileID: 0}
   nivel: 1
   limiteUnidad: 15
   oro: 990
   spawnPoint: {fileID: 405192623}
   m: {fileID: 1567021142}
   lUnidadesDisponibles:
-  - {fileID: 9029183377340884386, guid: a4fa0099744306b498b8570309445864, type: 3}
+  - {fileID: 9029183377340884386, guid: 851d038523dc6a44bb308255b97e17f7, type: 3}
   lUnidadesActivas: []
   lUnidadesInstaciadas: []
 --- !u!1 &766601833
@@ -7404,7 +7405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.data[0]
@@ -7413,7 +7414,7 @@ PrefabInstance:
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.data[1]
       value: 
-      objectReference: {fileID: 3275917754651345523, guid: 9d6eef6dcb4c91847b45ce148085ea00, type: 3}
+      objectReference: {fileID: 3675687609785833620, guid: 09bcf799271b8ad41953ba8d83295bd7, type: 3}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.data[2]
       value: 

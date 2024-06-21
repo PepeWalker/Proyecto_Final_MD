@@ -22,8 +22,6 @@ public class BotonMenu : MonoBehaviour
 
 
 
-   
-
 
     // Aumenta el tamanio del texto para luego reducirlo, dar retroalimentacion de donde esta el raton
     public void OnEnterIncreaseSizeText(TextMeshProUGUI t)

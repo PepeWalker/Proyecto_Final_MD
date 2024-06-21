@@ -26,6 +26,11 @@ public class Unidades : MonoBehaviour
     public bool muerto;
 
 
+
+    public Animator anim;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,9 @@ public class Unidades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Comprobar estado para animacion??
+        //CheckAnimator();
+
         //1 comprobar si esta muerto
         //Caso positivo llamar funcion para animacion de muerte y reiniciar unidad.
         CheckDeath();
@@ -54,8 +62,10 @@ public class Unidades : MonoBehaviour
         }
         else if (targetAtDistance() && !atacando)
         {
+
             atacando = true;
             andando = false;
+            anim.SetBool("Andando", false);
 
             //Funcion atacando
             StartCoroutine(AtacarIE());
@@ -63,11 +73,41 @@ public class Unidades : MonoBehaviour
         }
         //4 Si no alcance mover
         else
-        { moveUnit();andando = true; }
+        { 
+            moveUnit();
+            anim.SetBool("Andando", true);
+            andando = true;
+            
+        }
     
 
 
     }
+
+
+    //no seguro se hace asi
+
+    public void CheckAnimator()
+    {
+        if(recibiendoAtaque)
+        {
+            anim.SetTrigger("RecibiendoAtaque");
+        }
+        else if (andando)
+        {
+            anim.SetBool("Andando", true);
+
+        }
+        else if(atacando)
+        {
+
+            anim.SetTrigger("Atacando");
+        }
+        
+
+}
+
+
 
     public virtual void CheckDeath()
     {
@@ -166,23 +206,7 @@ public class Unidades : MonoBehaviour
 
 
 
-    //Usar un RayCast para buscar el objetivo mas cerncano?
-    //Para el comportamiento
-    /*
-    public void rayCastTarget()
-    {
-        Ray ray = new Ray(transform.position, direction);
-        RaycastHit Hit;
-        if (Physics.Raycast(ray, out Hit, rayCastLenght))
-        {
-            if (Hit.collider.CompareTag(enemyTag))
-            {
-
-            }
-        }
-
-    }
-    */
+    
 
     //Funcion atacar
     
@@ -201,11 +225,19 @@ public class Unidades : MonoBehaviour
 
         while (!muerto && !unidadTarget.isDeath())
         {
-                    Debug.Log("Atacando!");
-                    unidadTarget.RecibirAtaque(ataque);
+            Debug.Log("Atacando!");
+            anim.SetTrigger("Atacando");
+            yield return new WaitForSeconds(0.2f);
+            unidadTarget.RecibirAtaque(ataque);
 
-                    Debug.Log("Esperando para volver a atacar!");
-                    yield return new WaitForSeconds(velocidadAtaque);
+                    
+
+                    if (!unidadTarget.isDeath())
+            {
+                Debug.Log("Esperando para volver a atacar!");
+                yield return new WaitForSeconds(velocidadAtaque);
+            }
+                    
                 
         }
 
@@ -223,6 +255,7 @@ public class Unidades : MonoBehaviour
     {
          Debug.Log("recibiendo Danio!");
         recibiendoAtaque = true;
+        anim.SetTrigger("recibiendoAtaque");
         //simple calculo del danio, baser defencia a restar directamente el danio
         vida -= danio - defensa;
         if (vida < 0)
