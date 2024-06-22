@@ -21,8 +21,8 @@ TagManager:
   - Water
   - UI
   - Fondo Escenario
-  - 
-  - 
+  - Monstruo Azul
+  - Monstruo Rojo
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Monstruo Rojo
+    uniqueID: 2306864047
+    locked: 0
+  - name: Mosntruo Azul
+    uniqueID: 1967881145
     locked: 0
