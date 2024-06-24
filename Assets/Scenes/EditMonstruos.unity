@@ -1071,6 +1071,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008040323}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008040327}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
 --- !u!1 &1008040321 stripped
 GameObject:
@@ -1144,6 +1147,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8215743538414407439, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
   m_PrefabInstance: {fileID: 1008040320}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1008040327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008040321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d013df4e1dacb574dbd37936d00f58d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 50
+  vidaMax: 45
+  ataque: 0
+  defensa: 0
+  velocidad: 0
+  alcance: 0
+  velocidadAtaque: 0
+  distanciaAlObjetivo: 0
+  coste: 0
+  esJugador: 0
+  target: {fileID: 0}
+  origenSpawn: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 1}
+  rayCastLenght: 0
+  andando: 0
+  atacando: 0
+  recibiendoAtaque: 0
+  muerto: 0
+  anim: {fileID: 0}
 --- !u!4 &1122215439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6375583528858144561, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
