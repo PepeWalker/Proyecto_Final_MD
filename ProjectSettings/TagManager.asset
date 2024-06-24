@@ -23,7 +23,7 @@ TagManager:
   - Fondo Escenario
   - Monstruo Azul
   - Monstruo Rojo
-  - 
+  - Monstruo Verde
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Monstruo Verde
+    uniqueID: 3583679219
     locked: 0
   - name: Monstruo Rojo
     uniqueID: 2306864047

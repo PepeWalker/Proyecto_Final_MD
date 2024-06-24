@@ -130,7 +130,11 @@ public class BotonMenu : MonoBehaviour
 
     }
 
-    
+    //Animaciones de los bichos del menu
+    public void TriggerAnimation(Animator animator)
+    {
+        animator.SetTrigger("recibiendoAtaque");
+    }
 
     public void QuitGame()
     {
