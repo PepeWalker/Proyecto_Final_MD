@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Unidades : MonoBehaviour
 {
+    public DatosUnidad datosUnidad;
+
 
     public float vida, vidaMax, ataque, defensa, velocidad, alcance, velocidadAtaque, distanciaAlObjetivo;
 
@@ -48,8 +50,16 @@ public class Unidades : MonoBehaviour
     void Start()
     {
         estadoActual = UnidadEstado.Idle;
-        
-        
+
+        vida = datosUnidad.vidaMax;
+        ataque = datosUnidad.ataque;
+        defensa = datosUnidad.defensa;
+        velocidad = datosUnidad.velocidad;
+        alcance = datosUnidad.alcance;
+        velocidadAtaque = datosUnidad.velocidadAtaque;
+
+        // guardar posicion de spawn
+        origenSpawn = transform.position;
     }
 
     // Update is called once per frame
@@ -186,6 +196,8 @@ public class Unidades : MonoBehaviour
             //Comunicar con el castillo
             //castillo.UnidadMuerta(this);
         }
+
+        GameEvents.current.UnidadMuerta(this);
     }
 
 
@@ -276,7 +288,7 @@ public class Unidades : MonoBehaviour
         return puedeRecibirDanio;
     }
 
-    public void RecibirAtaque(float danio)
+    public virtual void RecibirAtaque(float danio)
     {
         if (!puedeRecibirDanio) return;
 

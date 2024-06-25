@@ -10,17 +10,65 @@ public class Castillo : Unidades
 
     public Transform spawnPoint;
 
-    public MotorBatalla m; //temporal
 
-    
+
     public List<GameObject> lUnidadesDisponibles, lUnidadesActivas;
     public List<Unidades> lUnidadesInstaciadas, lUnidadesMuertas;
 
-    // Start is called before the first frame update
-     void Start()
-    {
 
-        
+    public List<DatosUnidad> tiposDeUnidades;
+    private Dictionary<System.Type, Queue <Unidades>>unidadesPool;
+
+   
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        unidadesPool = new Dictionary<System.Type, Queue<Unidades>>();
+
+        //para debug
+        if (tiposDeUnidades.Count != lUnidadesDisponibles.Count)
+        {
+            Debug.LogError("El número de tipos de unidades no coincide con las unidades disponibles.");
+            return;
+        }
+
+
+
+        for (int i = 0;i < tiposDeUnidades.Count; i++)
+        {
+            //para debug
+            if (tiposDeUnidades[i] == null || tiposDeUnidades[i].prefab == null)
+            {
+                Debug.LogError($"El tipo de unidad o prefab en el índice {i} es null.");
+                continue;
+            }
+
+
+            Queue<Unidades> pool = new Queue<Unidades>();
+            //genero 5 de cada por ahora?
+            for (int j = 0;j<5;j++) 
+            {
+                Unidades u = Instantiate(tiposDeUnidades[i].prefab, new Vector3(0, 1500, 0), Quaternion.identity).GetComponent<Unidades>();
+                
+                //para debug
+                if (u == null)
+                {
+                    Debug.LogError($"No se pudo instanciar la unidad del tipo {tiposDeUnidades[i].name}");
+                    continue;
+                }
+
+
+                u.gameObject.SetActive(false);
+                pool.Enqueue(u);
+            }
+            unidadesPool[tiposDeUnidades[i].prefab.GetComponent<Unidades>().GetType()] = pool;
+
+        }
+
+
+        //Viejo codigo
+        /*
         //llena la lista de unidades con unidades clonadas de la lista de prefab/GO unidades
         foreach (GameObject g in lUnidadesDisponibles)
         {
@@ -31,7 +79,7 @@ public class Castillo : Unidades
         //Cojo motorbatlla por si acaso?
         //No se si necesario
         m = GetComponentInParent<MotorBatalla>();
-
+        */
 
         //coger entre los GO hijos cual tiene la tag Spawnpoint para establecerlo
         //por si añado mas hijo en el futuro 
@@ -57,60 +105,58 @@ public class Castillo : Unidades
        
     }
 
+
+    void OnEnable()
+    {
+        GameEvents.current.onUnidadMuerta += UnidadMuerta;
+    }
+
+    void OnDisable()
+    {
+        GameEvents.current.onUnidadMuerta -= UnidadMuerta;
+    }
+
+
     //funcion para genear unidad en funcion del i introducido.
     //Será por boton en canvas
     public void GenerarUnidad(int i)
     {
-        if (lUnidadesActivas.Count < limiteUnidad)
+        if (lUnidadesActivas.Count < limiteUnidad && oro >= tiposDeUnidades[i].coste)
         {
-            
-            
-            
-            if(oro >= lUnidadesInstaciadas[i].coste)
-            {
-                Unidades unidadAActivar = null;
+            //rotacion basada en si es jugador o enemigo
+            Quaternion rotacion = esJugador ? Quaternion.Euler(0, -90, 0) : Quaternion.Euler(0, 90, 0);
 
-                foreach (Unidades unidadMuerta in lUnidadesMuertas)
-                {
-                    if (unidadMuerta.GetType() == lUnidadesInstaciadas[i].GetType())
-                    {
-                        unidadAActivar = unidadMuerta;
-                        break;
-                    }
-                }
+            //posicion de spawnpoint
+            Vector3 posicion = spawnPoint.position;
 
-                if (unidadAActivar != null)
-                {   
-                    // Reactivar la unidad muerta
-                    unidadAActivar.gameObject.SetActive(true);
-                    unidadAActivar.ResetearUnidad(); // necesito implementar este método
-                    unidadAActivar.transform.position = spawnPoint.position;
-                    lUnidadesMuertas.Remove(unidadAActivar);
-                    lUnidadesActivas.Add(unidadAActivar.gameObject);
-                }
-                else
-                {
-                    // si no hay unidad muerta, crea una nueva
-                    lUnidadesActivas.Add(Instantiate(lUnidadesDisponibles[i], spawnPoint.position, Quaternion.identity));
-                }
+            Unidades unidad = Instantiate(tiposDeUnidades[i].prefab, posicion, rotacion).GetComponent<Unidades>();
+            unidad.datosUnidad = tiposDeUnidades[i];
+            unidad.ResetearUnidad();
+            lUnidadesActivas.Add(unidad.gameObject);
+            decreaseGold(tiposDeUnidades[i].coste);
 
-                decreaseGold(lUnidadesInstaciadas[i].coste);
-                }
-            else
-            {
-                Debug.Log("No hay suficiente oro para generar esta unidad.");
-            }
+            Debug.Log($"Unidad generada en posición: {posicion}, rotación: {rotacion.eulerAngles}");
+
+
         }
         else
         {
-            Debug.Log("Maximo unidades alcanzado, espera que alguna se muera...");
+            //Si has alcancedo limite de unidades
+            Debug.Log(lUnidadesActivas.Count >= limiteUnidad ? "Máximo de unidades alcanzado." : "Oro insuficiente.");
         }
     }
 
-    //}
-    //else if (Input.GetKeyDown("1"))
-    //    Debug.Log("Unidades tipo 1 Maximas");
+    public void UnidadMuerta(Unidades unidad)
+    {
+        lUnidadesActivas.Remove(unidad.gameObject);
+        unidad.gameObject.SetActive(false);
 
+        System.Type tipoUnidad = unidad.GetType();
+        if (unidadesPool.ContainsKey(tipoUnidad))
+        {
+            unidadesPool[tipoUnidad].Enqueue(unidad);
+        }
+    }
 
     public float getOro()
     {
@@ -141,7 +187,21 @@ public class Castillo : Unidades
     }
 
 
-    
+    public override void RecibirAtaque(float danio)
+    {
+        base.RecibirAtaque(danio);
+        if (isDeath())
+        {
+            GameOver();
+        }
+    }
+    private void GameOver()
+    {
+        Debug.Log(esJugador ? "¡Has perdido!" : "¡Has ganado!");
+
+        //  añadir mas cosas para finalizar el juego
+        //  mostrar una pantalla de fin de juego, detener la generación de unidades, etc.. no se que mas podria poner.
+    }
 
 
 

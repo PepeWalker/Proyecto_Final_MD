@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
       propertyPath: m_Name
-      value: monstruo 1 Rojo Jugador
+      value: monstruo 1 Rojo Enemigo
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Enemigo
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115,9 +115,9 @@ MonoBehaviour:
   velocidadAtaque: 2
   distanciaAlObjetivo: 1
   coste: 30
-  esJugador: 1
+  esJugador: 0
   target: {fileID: 0}
-  origenSpawn: {x: 0, y: -0.8, z: -28}
+  origenSpawn: {x: 0, y: -0.8, z: 33}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
   andando: 0

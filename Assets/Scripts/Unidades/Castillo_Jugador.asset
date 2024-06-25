@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c40fc35ae554e459b50742f688dfeb, type: 3}
+  m_Name: Castillo_Jugador
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3416320691990948359, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
+  coste: 0
+  vidaMax: 500
+  ataque: 0
+  defensa: 0
+  velocidad: 0
+  alcance: 0
+  velocidadAtaque: 0
