@@ -20,11 +20,24 @@ public class Unidades : MonoBehaviour
     public float rayCastLenght;
 
     //Variables de estado de la unidad
+    public enum UnidadEstado
+    {
+        Idle,
+        Andando,
+        Atacando,
+        RecibiendoAtaque,
+        Muriendo
+    }
+    private UnidadEstado estadoActual;
+
+
     public bool andando;
     public bool atacando;
     public bool recibiendoAtaque;
     public bool muerto;
 
+    // para no recibir varios ataque seguidos mientras esté recibiendo ya un ataque
+    private bool puedeRecibirDanio = true;
 
 
     public Animator anim;
@@ -34,7 +47,7 @@ public class Unidades : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        estadoActual = UnidadEstado.Idle;
         
         
     }
@@ -42,12 +55,44 @@ public class Unidades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Comprobar estado para animacion??
-        //CheckAnimator();
+        // comprobar si la unidad ha muerto
+        CheckDeath();  
 
-        //1 comprobar si esta muerto
-        //Caso positivo llamar funcion para animacion de muerte y reiniciar unidad.
-        CheckDeath();
+        if (!muerto)
+        {
+            // actualizamos y/o buscamos el objetivo mas cercano
+            getCloseTarget(esJugador);
+
+            
+
+            switch (estadoActual)
+            {
+                case UnidadEstado.Idle:
+                    EstadoIdle();
+                    break;
+                case UnidadEstado.Andando:
+                    EstadoAndando();
+                    break;
+                case UnidadEstado.Atacando:
+                    EstadoAtacando();
+                    break;
+                case UnidadEstado.RecibiendoAtaque:
+                    if (recibiendoAtaque)
+                    {
+                        StartCoroutine(EstadoRecibiendoAtaque());
+                    }
+                    break;
+                case UnidadEstado.Muriendo:
+                    EstadoMuriendo();
+                    break;
+            }
+        }
+
+        /* antigua logica comportamiento
+         * 
+            //1 comprobar si esta muerto
+            //Caso positivo llamar funcion para animacion de muerte y reiniciar unidad.
+            CheckDeath();
         
         //2 Buscar enemigo mas cercano y comprobar si esta a alcance para atacar
         getCloseTarget(this.esJugador);
@@ -79,56 +124,37 @@ public class Unidades : MonoBehaviour
             andando = true;
             
         }
-    
+        */
+
 
 
     }
 
-
-    //no seguro se hace asi
-
-    public void CheckAnimator()
-    {
-        if(recibiendoAtaque)
-        {
-            anim.SetTrigger("RecibiendoAtaque");
-        }
-        else if (andando)
-        {
-            anim.SetBool("Andando", true);
-
-        }
-        else if(atacando)
-        {
-
-            anim.SetTrigger("Atacando");
-        }
-        
-
-}
-
-
-
     public virtual void CheckDeath()
     {
-        muerto = isDeath();
-
-        if (muerto)
+        if (isDeath() && estadoActual != UnidadEstado.Muriendo)
         {
-            //Crea metodo de muerte
-            //Deberia activar efecto de muerte desactivarse y seguir con Reset
-            //Muerte();
-            Debug.Log("Unidad Muerta!");
-            this.gameObject.SetActive(false); //forma temporal!
-            //Llamamos al reset.
-            ResetUnit();
+            CambiarEstado(UnidadEstado.Muriendo);
         }
     }
 
     //Animacion de muerte, y reiniciar unidad, toda la vida, posicion de spawn etc.
-    public void ResetUnit()
+    public void ResetearUnidad()
     {
-        
+        vida = vidaMax;
+        andando = false;
+        atacando = false;
+        recibiendoAtaque = false;
+        muerto = false;
+        target = null;
+        transform.position = origenSpawn;
+        gameObject.SetActive(true);
+        puedeRecibirDanio = true;
+
+        //NO se si hace falta hacer algo con el animator 
+        CambiarEstado(UnidadEstado.Idle);
+
+        anim.SetBool("Muerto", false);
     }
 
     public bool isDeath()
@@ -141,29 +167,43 @@ public class Unidades : MonoBehaviour
         return false;
     }
 
+    private IEnumerator Morir()
+    {
+        // Activar animación de muerte 
+        if (anim != null)
+        {
+            anim.SetTrigger("Muerto");
+            // Esperar a que termine la animación
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+1.5f);
+        }
+
+        gameObject.SetActive(false);
+
+        // Notificar al Castillo
+        Castillo castillo = FindObjectOfType<Castillo>();
+        if (castillo != null)
+        {   
+            //Comunicar con el castillo
+            //castillo.UnidadMuerta(this);
+        }
+    }
+
+
     //Calculara el enemigo mas cercano 
     public void getCloseTarget(bool esjugadorAUX) {
 
-        GameObject[] objetivos;
+        //En funcion de que objetivo busca la unidad, se asigna una tag y otra
+        string tagObjetivo = esjugadorAUX ? "Enemigo" : "Player";
 
-        //Diferenciar el objetivo de la IA o no
-        
-        if (esjugadorAUX) 
-        { objetivos = GameObject.FindGameObjectsWithTag("Enemigo"); }
-        else
-            objetivos = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] objetivos = GameObject.FindGameObjectsWithTag(tagObjetivo);
 
-        // Inicializar variables para el enemigo más cercano
         GameObject closestEnemy = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-
-        // Recorrer todos los enemigos y encontrar el más cercano
         foreach (GameObject objetivo in objetivos)
         {
-            Vector3 directionToTarget = objetivo.transform.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            float dSqrToTarget = (objetivo.transform.position - currentPosition).sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = dSqrToTarget;
@@ -171,9 +211,7 @@ public class Unidades : MonoBehaviour
             }
         }
 
-        // Devolver el enemigo más cercano
         target = closestEnemy;
-
 
     }
 
@@ -181,90 +219,87 @@ public class Unidades : MonoBehaviour
     //para pasar a atacar.
     public bool targetAtDistance()
     {
-        EmpezarTargetAtDistance:
-        if (!isDeath()) { 
-            this.distanciaAlObjetivo = Vector3.Distance(transform.position, this.target.transform.position);
-
-            if (this.distanciaAlObjetivo < this.alcance)
-            {
-                //Debug.Log("Objetivo en alcance.");
-                return true;
-            }
-
-            else
-            {
-                //Debug.Log("Objetivo NO esta en alcance.");
-                return false;
-            }
-        }
-        else
+        // primero comprobar si tiene target o si está muerto
+        if (target == null || target.GetComponent<Unidades>().isDeath())
         {
             getCloseTarget(esJugador);
-            goto EmpezarTargetAtDistance;
+            if (target == null) return false;
         }
+
+        distanciaAlObjetivo = Vector3.Distance(transform.position, target.transform.position);
+        return distanciaAlObjetivo <= alcance;
     }
 
 
 
-    
+
 
     //Funcion atacar
-    
+
     internal IEnumerator AtacarIE() 
     {
-        //Hacer o corrutina con cada ataque, o una variable tiempo que se vaya reseteando y comprobando con cada ataque.
-        //Llamar animacion ataque efectos etc.
-        //bucle hasta que el objetivo esté muerto o la unidad muera.
 
-        //Si objetivo no tiene vida, salir y buscar siguiente objetivo mas cercano.
-        //Si tiene vida, buscarle su fincion derecibir daño y pasarle nuestro daño y que lo reste a su vida.
-        //depsues de atacar esperar el tiempo que indique su velocidad de ataque.
-
-        Debug.Log("Empezando a ATACAR");
-        Unidades unidadTarget = target.GetComponent<Unidades>();
-
-        while (!muerto && !unidadTarget.isDeath())
+        atacando = true;
+        while (estadoActual == UnidadEstado.Atacando && target != null)
         {
-            Debug.Log("Atacando!");
-            anim.SetTrigger("Atacando");
-            yield return new WaitForSeconds(0.2f);
-            unidadTarget.RecibirAtaque(ataque);
 
-                    
-
-                    if (!unidadTarget.isDeath())
+            // obtengo el sc del target 
+            Unidades targetUnidad = target.GetComponent<Unidades>();
+            if (targetUnidad != null)
             {
-                Debug.Log("Esperando para volver a atacar!");
-                yield return new WaitForSeconds(velocidadAtaque);
-            }
-                    
-                
-        }
+                // para esperar hasta que la unidad pueda recibirdanio
+                yield return new WaitUntil(() => targetUnidad.PuedeRecibirDanio());
 
+
+                //animacion de ataque
+                anim.SetTrigger("Atacando");
+                yield return new WaitForSeconds(0.2f);
+
+                //aplico el daño
+                targetUnidad.RecibirAtaque(ataque);
+                Debug.Log($"Atacando a {target.name}. Daño: {ataque}");
+            }
+            //espera el tiempo indicado por velocidad ataque
+            yield return new WaitForSeconds(velocidadAtaque);
+        }
         atacando = false;
-        Debug.Log("Dejando de Atacar!");
 
     }
 
-    internal float getVida() 
+    internal float getVida()
     {
-        return vida;    
+        return vida;
+    }
+
+    public bool PuedeRecibirDanio()
+    {
+        return puedeRecibirDanio;
     }
 
     public void RecibirAtaque(float danio)
     {
-         Debug.Log("recibiendo Danio!");
+        if (!puedeRecibirDanio) return;
+
+        Debug.Log($"{gameObject.name} recibiendo daño: {danio}");
+
+        puedeRecibirDanio = false;
         recibiendoAtaque = true;
-        anim.SetTrigger("recibiendoAtaque");
-        //simple calculo del danio, baser defencia a restar directamente el danio
-        vida -= danio - defensa;
-        if (vida < 0)
-        { 
+
+        float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
+        vida -= danioDespuesDefensa;
+
+        Debug.Log($"Vida restante de {gameObject.name}: {vida}");
+
+        if (vida <= 0)
+        {
             vida = 0;
+            CambiarEstado(UnidadEstado.Muriendo);
+        }
+        else
+        {
+            CambiarEstado(UnidadEstado.RecibiendoAtaque);
         }
 
-        recibiendoAtaque = false;
-            
     }
 
 
@@ -278,8 +313,123 @@ public class Unidades : MonoBehaviour
             transform.position -= new Vector3(0,0, velocidad * Time.deltaTime);
     }
 
-    
-    
+
+    // -------------------------------------------
+    // Funciones para comprobar el estado de las unidades
+    // para hacerlo escalable
+    //
 
 
+    private void EstadoIdle()
+    {
+        getCloseTarget(esJugador);
+        if (target != null)
+        {
+            if (targetAtDistance())
+            {
+                CambiarEstado(UnidadEstado.Atacando);
+            }
+            else
+            {
+                CambiarEstado(UnidadEstado.Andando);
+            }
+        }
+    }
+
+    private void EstadoAndando()
+    {
+       
+        if (targetAtDistance())
+        {
+            CambiarEstado(UnidadEstado.Atacando);
+        }
+        else
+        {
+            moveUnit();
+            anim.SetBool("Andando", true);
+        }
+    }
+
+    private void EstadoAtacando()
+    {
+
+        if (!targetAtDistance())
+        {
+            CambiarEstado(UnidadEstado.Andando);
+        }
+        else if (!atacando)
+        {
+            StartCoroutine(AtacarIE());
+        }
+        if (recibiendoAtaque)
+        {
+            CambiarEstado(UnidadEstado.RecibiendoAtaque);
+        }
+
+    }
+    private IEnumerator EstadoRecibiendoAtaque()
+    {
+        anim.SetTrigger("RecibiendoAtaque");
+
+        Debug.Log("Recibiendo un Ataque!");
+        // Esperar a que la animación termine
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+0.1f);
+
+        recibiendoAtaque = false;
+        puedeRecibirDanio = true;
+
+        // Volver al estado anterior
+        if (target != null && targetAtDistance())
+        {
+            CambiarEstado(UnidadEstado.Atacando);
+        }
+        else
+        {
+            CambiarEstado(UnidadEstado.Andando);
+        }
+    }
+        private void EstadoMuriendo()
+    {
+        if (!muerto)
+        {
+            StartCoroutine(Morir());
+        }
+    }
+
+    // ----------------------
+    // Funcion cambiar estado
+
+    private void CambiarEstado(UnidadEstado nuevoEstado)
+    {
+        // salir del estado actual
+        switch (estadoActual)
+        {
+            case UnidadEstado.Andando:
+                anim.SetBool("Andando", false);
+                break;
+            case UnidadEstado.Atacando:
+                StopCoroutine(AtacarIE());
+                atacando = false;
+                break;
+            case UnidadEstado.RecibiendoAtaque:
+                // 
+                break;
+        }
+
+        // entrar al nuevo estado
+        estadoActual = nuevoEstado;
+        switch (nuevoEstado)
+        {
+            case UnidadEstado.Atacando:
+                anim.SetTrigger("Atacando");
+                break;
+            case UnidadEstado.RecibiendoAtaque:
+                //anim.SetTrigger("RecibiendoAtaque");
+                //activo la animacion en el IEnumerator, asique seria redundante
+                break;
+            case UnidadEstado.Muriendo:
+                anim.SetBool("Muerto",true);
+                break;
+        }
+    }
 }

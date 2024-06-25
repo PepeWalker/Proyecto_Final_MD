@@ -14,7 +14,7 @@ public class Castillo : Unidades
 
     
     public List<GameObject> lUnidadesDisponibles, lUnidadesActivas;
-    public List<Unidades> lUnidadesInstaciadas;
+    public List<Unidades> lUnidadesInstaciadas, lUnidadesMuertas;
 
     // Start is called before the first frame update
      void Start()
@@ -63,11 +63,39 @@ public class Castillo : Unidades
     {
         if (lUnidadesActivas.Count < limiteUnidad)
         {
+            
+            
+            
             if(oro >= lUnidadesInstaciadas[i].coste)
             {
+                Unidades unidadAActivar = null;
+
+                foreach (Unidades unidadMuerta in lUnidadesMuertas)
+                {
+                    if (unidadMuerta.GetType() == lUnidadesInstaciadas[i].GetType())
+                    {
+                        unidadAActivar = unidadMuerta;
+                        break;
+                    }
+                }
+
+                if (unidadAActivar != null)
+                {   
+                    // Reactivar la unidad muerta
+                    unidadAActivar.gameObject.SetActive(true);
+                    unidadAActivar.ResetearUnidad(); // necesito implementar este método
+                    unidadAActivar.transform.position = spawnPoint.position;
+                    lUnidadesMuertas.Remove(unidadAActivar);
+                    lUnidadesActivas.Add(unidadAActivar.gameObject);
+                }
+                else
+                {
+                    // si no hay unidad muerta, crea una nueva
+                    lUnidadesActivas.Add(Instantiate(lUnidadesDisponibles[i], spawnPoint.position, Quaternion.identity));
+                }
+
                 decreaseGold(lUnidadesInstaciadas[i].coste);
-                lUnidadesActivas.Add(Instantiate(lUnidadesDisponibles[i], spawnPoint));
-            }
+                }
             else
             {
                 Debug.Log("No hay suficiente oro para generar esta unidad.");
