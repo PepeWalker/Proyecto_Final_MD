@@ -25,6 +25,8 @@ public class GameEvents : MonoBehaviour
 
 
     public event Action<Unidades> onUnidadMuerta;
+
+    
     public void UnidadMuerta(Unidades unidad)
     {
         onUnidadMuerta?.Invoke(unidad);
