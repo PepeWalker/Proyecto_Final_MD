@@ -78,7 +78,7 @@ public class BotonMenu : MonoBehaviour
     {
         if (g != null)
         {
-            g.SetActive(true); //No funciona, pilla la textura del textmeshpro, nose
+            g.SetActive(true); //No funciona
             audioSource.PlayOneShot(strikeOutSound);
         }
     }

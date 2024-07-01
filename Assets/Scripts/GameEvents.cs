@@ -2,27 +2,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEvents : MonoBehaviour
 {
-    public static GameEvents current;
+    public static GameEvents Instance { get; set; }
 
+    public bool isPaused = false;
 
     private void Awake()
     {
-        // Implementación del patrón Singleton
-        if (current == null)
+        if (Instance == null)
         {
-            current = this;
-            DontDestroyOnLoad(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(this);
         }
-        else if (current != this)
+        else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+    }
 
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
     public event Action<Unidades> onUnidadMuerta;
 

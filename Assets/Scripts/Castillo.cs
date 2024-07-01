@@ -108,12 +108,12 @@ public class Castillo : Unidades
 
     void OnEnable()
     {
-        GameEvents.current.onUnidadMuerta += UnidadMuerta;
+        GameEvents.Instance.onUnidadMuerta += UnidadMuerta;
     }
 
     void OnDisable()
     {
-        GameEvents.current.onUnidadMuerta -= UnidadMuerta;
+        GameEvents.Instance.onUnidadMuerta -= UnidadMuerta;
     }
 
 

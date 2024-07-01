@@ -25,7 +25,7 @@ public class MotorBatalla : MonoBehaviour
     {
 
         timer = 0f;
-        GameEvents.current = new GameObject("GameEvents").AddComponent<GameEvents>();
+        GameEvents.Instance = new GameObject("GameEvents").AddComponent<GameEvents>();
     }
 
     public void LevelUpCastillo(Castillo c)

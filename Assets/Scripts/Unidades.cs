@@ -197,7 +197,7 @@ public class Unidades : MonoBehaviour
             //castillo.UnidadMuerta(this);
         }
 
-        GameEvents.current.UnidadMuerta(this);
+        GameEvents.Instance.UnidadMuerta(this);
     }
 
 
