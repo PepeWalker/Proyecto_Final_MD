@@ -15,4 +15,5 @@ public class DatosUnidad : ScriptableObject
     public float velocidad;
     public float alcance;
     public float velocidadAtaque;
+    public Vector3 origenSpawn;
 }
