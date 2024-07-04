@@ -9,6 +9,7 @@ public class GameEvents : MonoBehaviour
     public static GameEvents Instance { get; set; }
 
     public bool isPaused = false;
+    public bool inOpciones = false;
 
     private void Awake()
     {
@@ -23,6 +24,11 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public void ToggleOpciones()
+    {
+        inOpciones = !inOpciones;
+    }
+
     public void TogglePause()
     {
         isPaused = !isPaused;
@@ -33,6 +39,13 @@ public class GameEvents : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ChangeScene(string sceneName)

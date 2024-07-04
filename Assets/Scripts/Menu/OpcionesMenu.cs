@@ -13,6 +13,8 @@ public class OpcionesMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropDown;
     Resolution[] resolutions;
 
+
+
     private void Start()
     {
         //Establecer la calidad del juego por defecto a hight, no hay cambios configuramos mas que los por defecto

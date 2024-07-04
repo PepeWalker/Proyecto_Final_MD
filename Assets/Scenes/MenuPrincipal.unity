@@ -1749,10 +1749,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1246579768}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1768457572}
+        m_TargetAssemblyTypeName: BotonMenu, Assembly-CSharp
+        m_MethodName: ToggleOpciones
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1768,6 +1768,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7894,10 +7906,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1246579768}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1768457572}
+        m_TargetAssemblyTypeName: BotonMenu, Assembly-CSharp
+        m_MethodName: ToggleOpciones
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8460,6 +8472,10 @@ MonoBehaviour:
   strikeOutSound: {fileID: 8300000, guid: 07ee2a04d70001d4fbf73542660ed6d7, type: 3}
   hoverSound: {fileID: 8300000, guid: b32875c4523c44a45963cd67bc06dabe, type: 3}
   changeSceneSound: {fileID: 8300000, guid: df2b306f32f892540ae548d9fcf463ef, type: 3}
+  opcionesMenuUI: {fileID: 1246579768}
+  monstruo1: {fileID: 2026692574}
+  monstruo2: {fileID: 1213151732}
+  monstruo3: {fileID: 1934408979}
   t: 0
 --- !u!1 &1770727084
 GameObject:
@@ -8687,6 +8703,7 @@ GameObject:
   - component: {fileID: 1784631431}
   - component: {fileID: 1784631430}
   - component: {fileID: 1784631429}
+  - component: {fileID: 1784631432}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -8744,6 +8761,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1784631432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784631428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de83789385146f947b7ba41d8ba4be06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
+  inOpciones: 0
 --- !u!4 &1792725336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5315990554067949956, guid: 2275fa4d28b8fbc48a003e4f82a3b87f, type: 3}
@@ -9065,6 +9096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d013df4e1dacb574dbd37936d00f58d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datosUnidad: {fileID: 0}
   vida: 50
   vidaMax: 45
   ataque: 0

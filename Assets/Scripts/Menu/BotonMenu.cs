@@ -20,7 +20,32 @@ public class BotonMenu : MonoBehaviour
     public AudioClip hoverSound; //Sonido de lapiz rayado del texto
     public AudioClip changeSceneSound; //sonido de paginas para cambio de escena o nose  
 
+    public GameObject opcionesMenuUI, monstruo1, monstruo2, monstruo3;
 
+    public void ToggleMonstruosMenu()
+    {
+       if(GameEvents.Instance.inOpciones)
+        {
+            monstruo1.SetActive(false);
+            monstruo2.SetActive(false);
+            monstruo3.SetActive(false);
+
+        }
+        else
+        {
+            monstruo1.SetActive(true);
+            monstruo2.SetActive(true);
+            monstruo3.SetActive(true);
+        }
+    }
+
+    public void ToggleOpciones() 
+    {
+        GameEvents.Instance.ToggleOpciones();
+        ToggleMonstruosMenu();
+        opcionesMenuUI.SetActive(GameEvents.Instance.inOpciones);
+
+    }
 
 
     // Aumenta el tamanio del texto para luego reducirlo, dar retroalimentacion de donde esta el raton
