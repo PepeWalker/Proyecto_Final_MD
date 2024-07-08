@@ -58,8 +58,7 @@ public class Unidades : MonoBehaviour
         alcance = datosUnidad.alcance;
         velocidadAtaque = datosUnidad.velocidadAtaque;
 
-        // guardar posicion de spawn
-        origenSpawn = transform.position;
+
     }
 
     // Update is called once per frame
@@ -68,12 +67,10 @@ public class Unidades : MonoBehaviour
         // comprobar si la unidad ha muerto
         CheckDeath();  
 
-        if (!muerto)
-        {
+        
             // actualizamos y/o buscamos el objetivo mas cercano
             getCloseTarget(esJugador);
 
-            
 
             switch (estadoActual)
             {
@@ -96,7 +93,7 @@ public class Unidades : MonoBehaviour
                     EstadoMuriendo();
                     break;
             }
-        }
+        
 
         /* antigua logica comportamiento
          * 
@@ -252,27 +249,35 @@ public class Unidades : MonoBehaviour
     {
 
         atacando = true;
+
+        
         while (estadoActual == UnidadEstado.Atacando && target != null)
         {
 
             // obtengo el sc del target 
             Unidades targetUnidad = target.GetComponent<Unidades>();
-            if (targetUnidad != null)
+            if (targetUnidad != null && targetUnidad.PuedeRecibirDanio())
             {
-                // para esperar hasta que la unidad pueda recibirdanio
-                yield return new WaitUntil(() => targetUnidad.PuedeRecibirDanio());
-
-
+                
                 //animacion de ataque
                 anim.SetTrigger("Atacando");
-                yield return new WaitForSeconds(0.2f);
+                //esperar que la animacion termine
+                yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + 0.2f);
 
                 //aplico el daño
                 targetUnidad.RecibirAtaque(ataque);
                 Debug.Log($"Atacando a {target.name}. Daño: {ataque}");
+
+                //espera el tiempo indicado por velocidad ataque
+                yield return new WaitForSeconds(velocidadAtaque);
             }
-            //espera el tiempo indicado por velocidad ataque
-            yield return new WaitForSeconds(velocidadAtaque);
+            else
+            {
+                //si el target no puede recibir danio, espera un poco para repetir otro ataque
+                //Esto lo pongo porque atacaban muy rapido y como son clones necesito algo de control
+                yield return new WaitForSeconds(0.5f);
+            }
+            
         }
         atacando = false;
 
@@ -350,15 +355,21 @@ public class Unidades : MonoBehaviour
 
     private void EstadoAndando()
     {
-       
+       if(target != null)
+        {
+            getCloseTarget(esJugador);
+        }
         if (targetAtDistance())
         {
             CambiarEstado(UnidadEstado.Atacando);
+            Debug.Log("Cambiado a estado de Ataque");
         }
         else
         {
             moveUnit();
             anim.SetBool("Andando", true);
+
+            Debug.Log("Andando...");
         }
     }
 

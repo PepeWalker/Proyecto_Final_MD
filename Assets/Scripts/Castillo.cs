@@ -26,12 +26,6 @@ public class Castillo : Unidades
     {
         unidadesPool = new Dictionary<System.Type, Queue<Unidades>>();
 
-        //para debug
-        if (tiposDeUnidades.Count != lUnidadesDisponibles.Count)
-        {
-            Debug.LogError("El número de tipos de unidades no coincide con las unidades disponibles.");
-            return;
-        }
 
 
 
@@ -67,36 +61,8 @@ public class Castillo : Unidades
         }
 
 
-        //Viejo codigo
-        /*
-        //llena la lista de unidades con unidades clonadas de la lista de prefab/GO unidades
-        foreach (GameObject g in lUnidadesDisponibles)
-        {
-            Unidades u = Instantiate(g, new Vector3(0, 1500, 0), Quaternion.identity).GetComponent<Unidades>();
-            lUnidadesInstaciadas.Add(u);
-        }
-
-        //Cojo motorbatlla por si acaso?
-        //No se si necesario
-        m = GetComponentInParent<MotorBatalla>();
-        */
-
-        //coger entre los GO hijos cual tiene la tag Spawnpoint para establecerlo
-        //por si añado mas hijo en el futuro 
-        // LO METO A MANO DESDE LA INTERFAZ
-        /*foreach (Transform child in transform)
-        {
-            if (child.CompareTag("SpawnPoint"))
-            {
-                spawnPoint = child;
-                break; // sale del bucle al encontrar el objecto con la etiqueta "SpawnPoint"
-            }
-        }
-        */
 
     }
-
-    //Hacer el comportamiento de la IA con otro castillo IA
 
 
     // Update is called once per frame
@@ -108,13 +74,16 @@ public class Castillo : Unidades
 
     void OnEnable()
     {
-        GameEvents.Instance.onUnidadMuerta += UnidadMuerta;
+        //GameEvents.Instance.onUnidadMuerta += UnidadMuerta;
     }
 
     void OnDisable()
     {
         GameEvents.Instance.onUnidadMuerta -= UnidadMuerta;
     }
+
+   
+
 
 
     //funcion para genear unidad en funcion del i introducido.

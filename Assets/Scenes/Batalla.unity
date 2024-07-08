@@ -15076,6 +15076,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
+      propertyPath: esJugador
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1653069068}
@@ -15093,7 +15097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: tiposDeUnidades.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesActivas.Array.size
@@ -15104,8 +15108,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 354a89e30f0672d4790e1247d8a9be46, type: 2}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
+      propertyPath: tiposDeUnidades.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d418ea5718c10c243a09818d40098cdb, type: 2}
+    - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
+      propertyPath: tiposDeUnidades.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: dca5a1a3a56aca24191fc3f3a2b0362f, type: 2}
+    - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -25091518047864361, guid: d826d43b0a35e614eb4151b8ee913d0b, type: 3}
       propertyPath: lUnidadesDisponibles.Array.data[0]
