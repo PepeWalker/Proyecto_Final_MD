@@ -17,6 +17,7 @@ MonoBehaviour:
   vidaMax: 50
   ataque: 5
   defensa: 0
-  velocidad: 2
+  velocidad: 3
   alcance: 2
-  velocidadAtaque: 3
+  velocidadAtaque: 4
+  escala: {x: 0, y: 0, z: 0}

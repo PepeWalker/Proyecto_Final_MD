@@ -158,7 +158,7 @@ public class Unidades : MonoBehaviour
         gameObject.SetActive(true);
         puedeRecibirDanio = true;
 
-        //NO se si hace falta hacer algo con el animator 
+        
         CambiarEstado(UnidadEstado.Idle);
 
         anim.SetBool("Muerto", false);
@@ -181,17 +181,17 @@ public class Unidades : MonoBehaviour
         {
             anim.SetTrigger("Muerto");
             // Esperar a que termine la animación
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+1.5f);
+            yield return new WaitForSeconds(2.5f);
         }
 
-        gameObject.SetActive(false);
 
         // Notificar al Castillo
         Castillo castillo = FindObjectOfType<Castillo>();
         if (castillo != null)
         {   
             //Comunicar con el castillo
-            //castillo.UnidadMuerta(this);
+            // quien la pone inactiva y gestiona la lista de unidades disponibles etc
+            castillo.UnidadMuerta(this);
         }
 
         GameEvents.Instance.UnidadMuerta(this);
@@ -269,6 +269,7 @@ public class Unidades : MonoBehaviour
                 Debug.Log($"Atacando a {target.name}. Daño: {ataque}");
 
                 //espera el tiempo indicado por velocidad ataque
+                Debug.Log($"{this.name} esperando para siguiente ataque.");
                 yield return new WaitForSeconds(velocidadAtaque);
             }
             else
@@ -323,7 +324,7 @@ public class Unidades : MonoBehaviour
     //Funcion que mueve la unidad, a izquierda si IA a derecha si Player
     public void moveUnit()
     {
-
+        Debug.Log($"{gameObject.name} moviendose.");
         if (esJugador)
             transform.position += new Vector3(0, 0, velocidad * Time.deltaTime);
         else
@@ -362,7 +363,7 @@ public class Unidades : MonoBehaviour
         if (targetAtDistance())
         {
             CambiarEstado(UnidadEstado.Atacando);
-            Debug.Log("Cambiado a estado de Ataque");
+            Debug.Log($"{gameObject.name} Cambiado a estado de Ataque");
         }
         else
         {
@@ -392,11 +393,16 @@ public class Unidades : MonoBehaviour
     }
     private IEnumerator EstadoRecibiendoAtaque()
     {
+        recibiendoAtaque = true;
+        puedeRecibirDanio = false;
+
         anim.SetTrigger("RecibiendoAtaque");
 
-        Debug.Log("Recibiendo un Ataque!");
+
+
+        Debug.Log($"{gameObject.name} esta recibiendo un Ataque!");
         // Esperar a que la animación termine
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+0.1f);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+0.3f);
 
         recibiendoAtaque = false;
         puedeRecibirDanio = true;
