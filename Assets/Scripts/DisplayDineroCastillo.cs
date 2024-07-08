@@ -25,7 +25,7 @@ public class DisplayDineroCastillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoOro.text = "Oro: " + castilloScript.oro.ToString();
-        textoNivel.text = "Nivel Castillo: " + castilloScript.nivel.ToString();
+        textoOro.text = castilloScript.oro.ToString();
+        textoNivel.text = castilloScript.nivel.ToString();
     }
 }

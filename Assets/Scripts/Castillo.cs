@@ -143,7 +143,7 @@ public class Castillo : Unidades
     // nivel 3 igual pero mas?
     public void levelUp()
     {
-        //mas adelante aniadir diferencia para nivel 2 y 3
+        
         if (oro>= 100)
         {
             nivel++;

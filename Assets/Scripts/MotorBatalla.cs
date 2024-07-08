@@ -33,7 +33,6 @@ public class MotorBatalla : MonoBehaviour
         if(c.nivel < nivelCastilloMax)
         {
             c.levelUp();
-            c.nivel++;
         }
         else
         {
