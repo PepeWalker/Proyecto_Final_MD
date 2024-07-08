@@ -269,16 +269,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d013df4e1dacb574dbd37936d00f58d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  datosUnidad: {fileID: 0}
-  vida: 20
-  vidaMax: 20
-  ataque: 7
-  defensa: 1
-  velocidad: 2
-  alcance: 8
-  velocidadAtaque: 3
-  distanciaAlObjetivo: 1
-  coste: 35
+  datosUnidad: {fileID: 11400000, guid: 354a89e30f0672d4790e1247d8a9be46, type: 2}
+  vida: 0
+  vidaMax: 0
+  ataque: 0
+  defensa: 0
+  velocidad: 0
+  alcance: 0
+  velocidadAtaque: 0
+  distanciaAlObjetivo: 0
+  coste: 0
   esJugador: 1
   target: {fileID: 0}
   origenSpawn: {x: 0, y: -0.8, z: -28}

@@ -1094,15 +1094,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datosUnidad: {fileID: 0}
-  vida: 50
-  vidaMax: 50
-  ataque: 6
+  vida: 0
+  vidaMax: 0
+  ataque: 0
   defensa: 0
-  velocidad: 4
-  alcance: 2
-  velocidadAtaque: 3
-  distanciaAlObjetivo: 1
-  coste: 40
+  velocidad: 0
+  alcance: 0
+  velocidadAtaque: 0
+  distanciaAlObjetivo: 0
+  coste: 0
   esJugador: 0
   target: {fileID: 0}
   origenSpawn: {x: 0, y: 0, z: 0}
