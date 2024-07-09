@@ -8402,7 +8402,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 103
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -9111,10 +9111,13 @@ MonoBehaviour:
   origenSpawn: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
+  estadoActual: 0
   andando: 0
+  corRunning: 0
   atacando: 0
   recibiendoAtaque: 0
   muerto: 0
+  puedeRecibirDanio: 1
   anim: {fileID: 0}
 --- !u!114 &1934408981
 MonoBehaviour:

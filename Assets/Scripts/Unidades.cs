@@ -30,16 +30,16 @@ public class Unidades : MonoBehaviour
         RecibiendoAtaque,
         Muriendo
     }
-    private UnidadEstado estadoActual;
+    public UnidadEstado estadoActual;
 
 
-    public bool andando;
+    public bool andando, corRunning;
     public bool atacando;
     public bool recibiendoAtaque;
     public bool muerto;
 
     // para no recibir varios ataque seguidos mientras esté recibiendo ya un ataque
-    private bool puedeRecibirDanio = true;
+    public bool puedeRecibirDanio = true;
 
 
     public Animator anim;
@@ -50,7 +50,7 @@ public class Unidades : MonoBehaviour
     void Start()
     {
         estadoActual = UnidadEstado.Idle;
-
+        datosUnidad.ataque = 225;
         vida = datosUnidad.vidaMax;
         ataque = datosUnidad.ataque;
         defensa = datosUnidad.defensa;
@@ -86,7 +86,9 @@ public class Unidades : MonoBehaviour
                 case UnidadEstado.RecibiendoAtaque:
                     if (recibiendoAtaque)
                     {
+                        
                         StartCoroutine(EstadoRecibiendoAtaque());
+                        recibiendoAtaque = false;
                     }
                     break;
                 case UnidadEstado.Muriendo:
@@ -169,6 +171,7 @@ public class Unidades : MonoBehaviour
         //Si la vida llega a cero o menos, eliminamos la unidad o reseteamos
         if (vida <= 0)
         {
+            muerto = true;
             return true;
         }
         return false;
@@ -247,9 +250,11 @@ public class Unidades : MonoBehaviour
 
     internal IEnumerator AtacarIE() 
     {
+        corRunning = true;
                 
-        while (estadoActual == UnidadEstado.Atacando && target != null)
-        {
+        
+        
+            atacando = true;
 
             // obtengo el sc del target 
             Unidades targetUnidad = target.GetComponent<Unidades>();
@@ -276,8 +281,8 @@ public class Unidades : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
             
-        }
-
+        
+        corRunning = false;
         atacando = false;
 
     }
@@ -382,10 +387,13 @@ public class Unidades : MonoBehaviour
             atacando = false;
             CambiarEstado(UnidadEstado.Andando);
         }
-        else if (!atacando)
+        else if (!atacando )
         {
-            atacando = true;
-            StartCoroutine(AtacarIE());
+            if(!corRunning) 
+            { 
+                StartCoroutine(AtacarIE()); 
+            }
+            
         }
         if (recibiendoAtaque)
         {
@@ -396,7 +404,7 @@ public class Unidades : MonoBehaviour
     }
     private IEnumerator EstadoRecibiendoAtaque()
     {
-        recibiendoAtaque = true;
+        
         puedeRecibirDanio = false;
 
         anim.SetTrigger("RecibiendoAtaque");
@@ -405,7 +413,7 @@ public class Unidades : MonoBehaviour
         // Esperar a que la animación termine
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+0.3f);
 
-        recibiendoAtaque = false;
+        
         puedeRecibirDanio = true;
 
         // Volver al estado anterior
@@ -438,8 +446,12 @@ public class Unidades : MonoBehaviour
                 anim.SetBool("Andando", false);
                 break;
             case UnidadEstado.Atacando:
-                StopCoroutine(AtacarIE());
-                atacando = false;
+                if (corRunning)
+                { StopCoroutine(AtacarIE());
+                    corRunning = false; 
+                    atacando = false;
+                }
+                  
                 break;
             case UnidadEstado.RecibiendoAtaque:
                 // 
@@ -448,7 +460,7 @@ public class Unidades : MonoBehaviour
 
         // entrar al nuevo estado
         estadoActual = nuevoEstado;
-        switch (nuevoEstado)
+        /*switch (nuevoEstado)
         {
             case UnidadEstado.Atacando:
                 //anim.SetTrigger("Atacando");
@@ -460,6 +472,6 @@ public class Unidades : MonoBehaviour
             case UnidadEstado.Muriendo:
                 //anim.SetBool("Muerto",true);
                 break;
-        }
+        }*/
     }
 }
