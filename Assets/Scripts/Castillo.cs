@@ -34,7 +34,7 @@ public class Castillo : Unidades
             //para debug
             if (tiposDeUnidades[i] == null || tiposDeUnidades[i].prefab == null)
             {
-                Debug.LogError($"El tipo de unidad o prefab en el índice {i} es null.");
+                Debug.LogError($"el tipo de unidad en el índice {i} es null.");
                 continue;
             }
 
@@ -48,7 +48,7 @@ public class Castillo : Unidades
                 //para debug
                 if (u == null)
                 {
-                    Debug.LogError($"No se pudo instanciar la unidad del tipo {tiposDeUnidades[i].name}");
+                    Debug.LogError($"No se instanció la unidad del tipo {tiposDeUnidades[i].name}");
                     continue;
                 }
 
@@ -70,20 +70,6 @@ public class Castillo : Unidades
     {
        
     }
-
-
-    void OnEnable()
-    {
-        //GameEvents.Instance.onUnidadMuerta += UnidadMuerta;
-    }
-
-    void OnDisable()
-    {
-        GameEvents.Instance.onUnidadMuerta -= UnidadMuerta;
-    }
-
-   
-
 
 
     //funcion para genear unidad en funcion del i introducido.

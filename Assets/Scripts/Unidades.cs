@@ -247,10 +247,7 @@ public class Unidades : MonoBehaviour
 
     internal IEnumerator AtacarIE() 
     {
-
-        atacando = true;
-
-        
+                
         while (estadoActual == UnidadEstado.Atacando && target != null)
         {
 
@@ -280,6 +277,7 @@ public class Unidades : MonoBehaviour
             }
             
         }
+
         atacando = false;
 
     }
@@ -362,11 +360,13 @@ public class Unidades : MonoBehaviour
         }
         if (targetAtDistance())
         {
+            andando = false;
             CambiarEstado(UnidadEstado.Atacando);
             Debug.Log($"{gameObject.name} Cambiado a estado de Ataque");
         }
         else
         {
+            andando = true;
             moveUnit();
             anim.SetBool("Andando", true);
 
@@ -379,14 +379,17 @@ public class Unidades : MonoBehaviour
 
         if (!targetAtDistance())
         {
+            atacando = false;
             CambiarEstado(UnidadEstado.Andando);
         }
         else if (!atacando)
         {
+            atacando = true;
             StartCoroutine(AtacarIE());
         }
         if (recibiendoAtaque)
         {
+            atacando = false;
             CambiarEstado(UnidadEstado.RecibiendoAtaque);
         }
 
@@ -397,8 +400,6 @@ public class Unidades : MonoBehaviour
         puedeRecibirDanio = false;
 
         anim.SetTrigger("RecibiendoAtaque");
-
-
 
         Debug.Log($"{gameObject.name} esta recibiendo un Ataque!");
         // Esperar a que la animación termine
@@ -419,7 +420,7 @@ public class Unidades : MonoBehaviour
     }
         private void EstadoMuriendo()
     {
-        if (!muerto)
+        if (muerto)
         {
             StartCoroutine(Morir());
         }
@@ -450,14 +451,14 @@ public class Unidades : MonoBehaviour
         switch (nuevoEstado)
         {
             case UnidadEstado.Atacando:
-                anim.SetTrigger("Atacando");
+                //anim.SetTrigger("Atacando");
                 break;
             case UnidadEstado.RecibiendoAtaque:
                 //anim.SetTrigger("RecibiendoAtaque");
                 //activo la animacion en el IEnumerator, asique seria redundante
                 break;
             case UnidadEstado.Muriendo:
-                anim.SetBool("Muerto",true);
+                //anim.SetBool("Muerto",true);
                 break;
         }
     }
