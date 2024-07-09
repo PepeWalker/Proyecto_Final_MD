@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Props_fondo
+    uniqueID: 1015014639
+    locked: 0
   - name: Monstruo Verde
     uniqueID: 3583679219
     locked: 0
@@ -58,4 +61,7 @@ TagManager:
     locked: 0
   - name: Mosntruo Azul
     uniqueID: 1967881145
+    locked: 0
+  - name: Props_delante
+    uniqueID: 965366203
     locked: 0

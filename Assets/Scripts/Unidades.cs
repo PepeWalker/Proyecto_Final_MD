@@ -50,13 +50,22 @@ public class Unidades : MonoBehaviour
     void Start()
     {
         estadoActual = UnidadEstado.Idle;
-        datosUnidad.ataque = 225;
+
+        float RandomBonus() => Random.Range(0f, 2f);
+
         vida = datosUnidad.vidaMax;
-        ataque = datosUnidad.ataque;
+        ataque = datosUnidad.ataque ;
         defensa = datosUnidad.defensa;
-        velocidad = datosUnidad.velocidad;
-        alcance = datosUnidad.alcance;
-        velocidadAtaque = datosUnidad.velocidadAtaque;
+        velocidad = datosUnidad.velocidad + RandomBonus();
+        alcance = datosUnidad.alcance + RandomBonus();
+        velocidadAtaque = datosUnidad.velocidadAtaque + RandomBonus();
+
+
+        // mostrar en consola los valores para debug
+        Debug.Log($"Unidad {gameObject.name} inicializada con: " +
+                  $"Vida: {vida}, Ataque: {ataque}, Defensa: {defensa}, " +
+                  $"Velocidad: {velocidad}, Alcance: {alcance}, " +
+                  $"Velocidad de Ataque: {velocidadAtaque}");
 
 
     }
@@ -64,9 +73,7 @@ public class Unidades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // comprobar si la unidad ha muerto
-        CheckDeath();  
-
+        
         
             // actualizamos y/o buscamos el objetivo mas cercano
             getCloseTarget(esJugador);
@@ -97,54 +104,24 @@ public class Unidades : MonoBehaviour
             }
         
 
-        /* antigua logica comportamiento
-         * 
-            //1 comprobar si esta muerto
-            //Caso positivo llamar funcion para animacion de muerte y reiniciar unidad.
-            CheckDeath();
         
-        //2 Buscar enemigo mas cercano y comprobar si esta a alcance para atacar
-        getCloseTarget(this.esJugador);
-
-
-        //3 Si esta objetivo al alcance, atacando=true y andando=false
-
-        //comprueba si esta a alacance
-        if(atacando)
-        {
-            Debug.Log("sigue atacando.");
-        }
-        else if (targetAtDistance() && !atacando)
-        {
-
-            atacando = true;
-            andando = false;
-            anim.SetBool("Andando", false);
-
-            //Funcion atacando
-            StartCoroutine(AtacarIE());
-            Debug.Log("Terminado de Atacar.");
-        }
-        //4 Si no alcance mover
-        else
-        { 
-            moveUnit();
-            anim.SetBool("Andando", true);
-            andando = true;
-            
-        }
-        */
-
-
 
     }
 
     public virtual void CheckDeath()
     {
-        if (isDeath() && estadoActual != UnidadEstado.Muriendo)
+
+        if (vida <= 0)
         {
+            vida = 0;
+            muerto = true;
             CambiarEstado(UnidadEstado.Muriendo);
         }
+        else if (recibiendoAtaque)
+        {
+            CambiarEstado(UnidadEstado.RecibiendoAtaque);
+        }
+
     }
 
     //Animacion de muerte, y reiniciar unidad, toda la vida, posicion de spawn etc.
@@ -309,17 +286,13 @@ public class Unidades : MonoBehaviour
         float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
         vida -= danioDespuesDefensa;
 
+
+
         Debug.Log($"Vida restante de {gameObject.name}: {vida}");
 
-        if (vida <= 0)
-        {
-            vida = 0;
-            CambiarEstado(UnidadEstado.Muriendo);
-        }
-        else
-        {
-            CambiarEstado(UnidadEstado.RecibiendoAtaque);
-        }
+        // comprobar si la unidad ha muerto
+        CheckDeath();
+
 
     }
 

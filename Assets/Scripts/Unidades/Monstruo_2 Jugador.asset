@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Monstruo_2 Jugador
   m_EditorClassIdentifier: 
   prefab: {fileID: 4381581151303620486, guid: 1ad4a2f9d529c8c4f914c1c0d0c58848, type: 3}
-  coste: 65
+  coste: 35
   vidaMax: 65
   ataque: 4
   defensa: 0
   velocidad: 1.5
   alcance: 8
   velocidadAtaque: 3
-  origenSpawn: {x: 0, y: 0, z: 0}

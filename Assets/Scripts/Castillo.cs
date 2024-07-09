@@ -144,7 +144,10 @@ public class Castillo : Unidades
 
     public override void RecibirAtaque(float danio)
     {
-        base.RecibirAtaque(danio);
+
+        float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
+        vida -= danioDespuesDefensa;
+
         if (isDeath())
         {
             GameOver();

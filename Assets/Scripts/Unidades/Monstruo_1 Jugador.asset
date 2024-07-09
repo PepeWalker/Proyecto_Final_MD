@@ -18,6 +18,5 @@ MonoBehaviour:
   ataque: 5
   defensa: 0
   velocidad: 2
-  alcance: 2
+  alcance: 4
   velocidadAtaque: 3.5
-  escala: {x: 0, y: 0, z: 0}
