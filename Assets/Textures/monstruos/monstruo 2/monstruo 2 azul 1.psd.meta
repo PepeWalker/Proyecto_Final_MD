@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec92e62e1e4f26646847c45ef7a6a419
+guid: 1ddc878189d347747b1d03f57cd78289
 importerOverride:
   nativeImporterType: 2089858483
   scriptedImporterType:
@@ -99,48 +99,6 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: cuernos
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 616
-      width: 236
-      height: 109
-    spriteID: 6c0efa68663c34b4697117476979de2e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 616}
-    spritePosition: {x: 86, y: 225}
-  - name: cuernos_color
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 248
-      y: 616
-      width: 234
-      height: 109
-    spriteID: 666bf248b9f934343a185093a52efb71
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 248, y: 616}
-    spritePosition: {x: 86, y: 225}
   - name: pupila_der
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -148,11 +106,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 470
-      y: 330
-      width: 30
-      height: 21
-    spriteID: 7ce3671b1b5a60a499cdcd45dc93c7c6
+      x: 513
+      y: 779
+      width: 55
+      height: 44
+    spriteID: 17e799a790d084b43b9f9fe51f97c763
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,8 +118,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 470, y: 330}
-    spritePosition: {x: 270, y: 167}
+    uvTransform: {x: 513, y: 779}
+    spritePosition: {x: 760, y: 828}
   - name: pupila_izq
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -169,11 +127,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 470
-      y: 359
-      width: 30
-      height: 21
-    spriteID: aa2422195bf76d94da54115b48de6cee
+      x: 445
+      y: 865
+      width: 64
+      height: 49
+    spriteID: af29b9f7c0f36e34d9a888c6122bdadb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,20 +139,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 470, y: 359}
-    spritePosition: {x: 103, y: 170}
-  - name: ojo_der
+    uvTransform: {x: 445, y: 865}
+    spritePosition: {x: 307, y: 748}
+  - name: brazo_izq
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 348
-      y: 330
-      width: 114
-      height: 60
-    spriteID: 646e941588197764791b875be1f5b380
+      x: 212
+      y: 779
+      width: 293
+      height: 78
+    spriteID: c901c706c5ac74747a86a2fee6054584
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,20 +160,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 348, y: 330}
-    spritePosition: {x: 218, y: 147}
-  - name: ojo_izq
+    uvTransform: {x: 212, y: 779}
+    spritePosition: {x: 143, y: 278}
+  - name: ojo_izq_color Fusionadas
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 348
-      y: 398
-      width: 114
-      height: 60
-    spriteID: 33f7436e10733a04992f24395eaefedc
+      x: 4
+      y: 779
+      width: 200
+      height: 167
+    spriteID: 20268fbb7a501684eb3f8ad25522ff40
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,9 +181,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 348, y: 398}
-    spritePosition: {x: 70, y: 150}
-  - name: cuerpo
+    uvTransform: {x: 4, y: 779}
+    spritePosition: {x: 259, y: 689}
+  - name: dientes_color Fusionadas
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -234,9 +192,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 336
-      height: 318
-    spriteID: e21733e1bae3ee1438670d35393151dc
+      width: 570
+      height: 612
+    spriteID: f3f315dccd74d024c8d0e6d9b7064858
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -245,8 +203,50 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 36, y: 0}
-  - name: cuerpo_color
+    spritePosition: {x: 283, y: 238}
+  - name: pierna_der
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 582
+      y: 4
+      width: 78
+      height: 192
+    spriteID: 39c226af71a1b47448cbec72c35125c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 582, y: 4}
+    spritePosition: {x: 740, y: 102}
+  - name: pierna_iz
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 582
+      y: 204
+      width: 73
+      height: 182
+    spriteID: 16e8ca49292e18843bbd7dd8cf5d0cba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 582, y: 204}
+    spritePosition: {x: 429, y: 89}
+  - name: lengua_color Fusionadas
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -254,10 +254,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 330
-      width: 336
-      height: 278
-    spriteID: 57044a7ab53e46a4488c6646b06f00a0
+      y: 624
+      width: 275
+      height: 147
+    spriteID: 96857574b0b0fcd4ba1b1e7d3e9fce13
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -265,20 +265,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 330}
-    spritePosition: {x: 36, y: 0}
-  - name: dientes
+    uvTransform: {x: 4, y: 624}
+    spritePosition: {x: 401, y: 373}
+  - name: brazo_der
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 733
-      width: 271
-      height: 86
-    spriteID: ed9a6b9458b9c614d9e3a6dbb8d36ede
+      x: 212
+      y: 865
+      width: 225
+      height: 79
+    spriteID: 8ff813196c4ac3340bbce2b6377a64f2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -286,20 +286,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 733}
-    spritePosition: {x: 64, y: 34}
-  - name: dientes_color
+    uvTransform: {x: 212, y: 865}
+    spritePosition: {x: 807, y: 327}
+  - name: ojo_der_color Fusionadas
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 827
-      width: 271
-      height: 86
-    spriteID: 0ebd46f12fac7454898a053c5eededf7
+      x: 287
+      y: 624
+      width: 178
+      height: 143
+    spriteID: 7624760a1be801a45a26a2679f3edc34
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -307,50 +307,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 827}
-    spritePosition: {x: 64, y: 34}
-  - name: lengua
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 283
-      y: 733
-      width: 218
-      height: 76
-    spriteID: ec34b50a290a7274988dfc3508dc0472
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 283, y: 733}
-    spritePosition: {x: 95, y: 13}
-  - name: lengua_color
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 283
-      y: 827
-      width: 218
-      height: 76
-    spriteID: ba9896087838155448e476e66d1c09e1
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 283, y: 827}
-    spritePosition: {x: 95, y: 13}
+    uvTransform: {x: 287, y: 624}
+    spritePosition: {x: 671, y: 775}
   characterData:
     bones: []
     parts: []
@@ -387,33 +345,13 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: cuernos
-    spriteName: cuernos
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 6c0efa68663c34b4697117476979de2e
-    layerID: 0
-    mosaicPosition: {x: 4, y: 616}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: cuernos_color
-    spriteName: cuernos_color
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 666bf248b9f934343a185093a52efb71
-    layerID: -1281286787
-    mosaicPosition: {x: 248, y: 616}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: pupila_der
     spriteName: pupila_der
     isGroup: 0
     parentIndex: -1
-    spriteID: 7ce3671b1b5a60a499cdcd45dc93c7c6
-    layerID: -209450119
-    mosaicPosition: {x: 470, y: 330}
+    spriteID: 17e799a790d084b43b9f9fe51f97c763
+    layerID: 0
+    mosaicPosition: {x: 513, y: 779}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -421,129 +359,89 @@ ScriptedImporter:
     spriteName: pupila_izq
     isGroup: 0
     parentIndex: -1
-    spriteID: aa2422195bf76d94da54115b48de6cee
+    spriteID: af29b9f7c0f36e34d9a888c6122bdadb
     layerID: 684320556
-    mosaicPosition: {x: 470, y: 359}
+    mosaicPosition: {x: 445, y: 865}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: ojo_der
-    spriteName: ojo_der
+  - name: brazo_izq
+    spriteName: brazo_izq
     isGroup: 0
     parentIndex: -1
-    spriteID: 646e941588197764791b875be1f5b380
-    layerID: -682887108
-    mosaicPosition: {x: 348, y: 330}
+    spriteID: c901c706c5ac74747a86a2fee6054584
+    layerID: -1061802535
+    mosaicPosition: {x: 212, y: 779}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: ojo_izq
-    spriteName: ojo_izq
+  - name: ojo_izq_color Fusionadas
+    spriteName: ojo_izq_color Fusionadas
     isGroup: 0
     parentIndex: -1
-    spriteID: 33f7436e10733a04992f24395eaefedc
-    layerID: -790550033
-    mosaicPosition: {x: 348, y: 398}
+    spriteID: 20268fbb7a501684eb3f8ad25522ff40
+    layerID: -1526671414
+    mosaicPosition: {x: 4, y: 779}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: cuerpo
-    spriteName: cuerpo
+  - name: dientes_color Fusionadas
+    spriteName: dientes_color Fusionadas
     isGroup: 0
     parentIndex: -1
-    spriteID: e21733e1bae3ee1438670d35393151dc
-    layerID: -44005548
+    spriteID: f3f315dccd74d024c8d0e6d9b7064858
+    layerID: -1393794507
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: cuerpo_color
-    spriteName: cuerpo_color
+  - name: pierna_der
+    spriteName: pierna_der
     isGroup: 0
     parentIndex: -1
-    spriteID: 57044a7ab53e46a4488c6646b06f00a0
-    layerID: 521717340
-    mosaicPosition: {x: 4, y: 330}
+    spriteID: 39c226af71a1b47448cbec72c35125c8
+    layerID: 60412625
+    mosaicPosition: {x: 582, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: dientes
-    spriteName: dientes
+  - name: pierna_iz
+    spriteName: pierna_iz
     isGroup: 0
     parentIndex: -1
-    spriteID: ed9a6b9458b9c614d9e3a6dbb8d36ede
-    layerID: 1766581894
-    mosaicPosition: {x: 4, y: 733}
+    spriteID: 16e8ca49292e18843bbd7dd8cf5d0cba
+    layerID: -1337614839
+    mosaicPosition: {x: 582, y: 204}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: dientes_color
-    spriteName: dientes_color
+  - name: lengua_color Fusionadas
+    spriteName: lengua_color Fusionadas
     isGroup: 0
     parentIndex: -1
-    spriteID: 0ebd46f12fac7454898a053c5eededf7
-    layerID: -431373450
-    mosaicPosition: {x: 4, y: 827}
+    spriteID: 96857574b0b0fcd4ba1b1e7d3e9fce13
+    layerID: -676450035
+    mosaicPosition: {x: 4, y: 624}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: brazos
-    spriteName: 
+  - name: brazo_der
+    spriteName: brazo_der
     isGroup: 0
     parentIndex: -1
-    spriteID: 49ee0c21f159870478f48e4cb96750df
-    layerID: 20450559
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: brazos_color
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 039dfe1363189114393db995a9de9c08
-    layerID: 445318245
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: piernas
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 7e860ab55ecaa5b4da29796f88ab6b1b
-    layerID: -1507193144
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: piernas_color
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 121b8015026994a4db57114f0ffbb900
-    layerID: 1122543344
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: lengua
-    spriteName: lengua
-    isGroup: 0
-    parentIndex: -1
-    spriteID: ec34b50a290a7274988dfc3508dc0472
-    layerID: -171784144
-    mosaicPosition: {x: 283, y: 733}
+    spriteID: 8ff813196c4ac3340bbce2b6377a64f2
+    layerID: -389488814
+    mosaicPosition: {x: 212, y: 865}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: lengua_color
-    spriteName: lengua_color
+  - name: ojo_der_color Fusionadas
+    spriteName: ojo_der_color Fusionadas
     isGroup: 0
     parentIndex: -1
-    spriteID: ba9896087838155448e476e66d1c09e1
-    layerID: 2025673492
-    mosaicPosition: {x: 283, y: 827}
+    spriteID: 7624760a1be801a45a26a2679f3edc34
+    layerID: -672457505
+    mosaicPosition: {x: 287, y: 624}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -551,18 +449,8 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
-    spriteID: b7e628b88d32ba24e901a2f096bba1f1
+    spriteID: 2e4b46a5d3eb32d44934c67de4dbb246
     layerID: 728255152
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: Capa de pintura 1
-    spriteName: 
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 5c691b43f150c344ea6da30247d5fe6a
-    layerID: -1426428338
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
@@ -571,7 +459,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
-    spriteID: 8a2937dd030282d4baff1e2f9e65b181
+    spriteID: b4979d67d0266e040adf166fe8fe1127
     layerID: 709232680
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
