@@ -9,7 +9,7 @@ public class DisplayDineroCastillo : MonoBehaviour
 {
     public GameObject castilloOBJ;
     public Castillo castilloScript;  
-    public TextMeshProUGUI textoOro;
+    public TextMeshProUGUI textoOro, textoOroFondo;
     public TextMeshProUGUI textoNivel;
 
 
@@ -26,6 +26,7 @@ public class DisplayDineroCastillo : MonoBehaviour
     void Update()
     {
         textoOro.text = castilloScript.oro.ToString();
+        textoOroFondo.text = textoOro.text;
         textoNivel.text = castilloScript.nivel.ToString();
     }
 }
