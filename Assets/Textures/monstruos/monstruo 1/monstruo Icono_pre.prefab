@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
       propertyPath: m_Name
-      value: monstruo Icono
+      value: monstruo Icono_pre
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,34 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5137215874915410178, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213719631172137811, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742053295340485949, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940754323670833175, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942609911934100757, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237842982567142723, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412649270736157676, guid: f5846c1aaeaf9284ea6ac36911126674, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
