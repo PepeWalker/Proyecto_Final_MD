@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7048176693540858344, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -7048176693540858344, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5059303237406478832, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -5059303237406478832, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4692109421457807552, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4692109421457807552, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2809312331711432917, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -2809312331711432917, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1203851476719465394, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -1203851476719465394, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074544158514273125, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1074544158514273125, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1164038225846286391, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1164038225846286391, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966219320858758168, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3966219320858758168, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5808792223547320018, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5808792223547320018, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -294,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8174976050298466440, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8174976050298466440, guid: b3ffd85648cbea541b2dfa0cc9db111d, type: 3}
       propertyPath: m_SortingLayerID
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d013df4e1dacb574dbd37936d00f58d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  datosUnidad: {fileID: 0}
+  datosUnidad: {fileID: 11400000, guid: de54cd98698e6834e8ca02be781f23ed, type: 2}
   vida: 0
   vidaMax: 0
   ataque: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   coste: 0
   esJugador: 0
   target: {fileID: 0}
-  origenSpawn: {x: 0, y: 0, z: 0}
+  origenSpawn: {x: 0, y: -0.8, z: 33}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
   estadoActual: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c40fc35ae554e459b50742f688dfeb, type: 3}
+  m_Name: Monstruo_2 Enemigo
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4381581151303620486, guid: 4e0fbc681a40be945af0fccb284e2a4a, type: 3}
+  coste: 35
+  vidaMax: 65
+  ataque: 4
+  defensa: 0
+  velocidad: 1.5
+  alcance: 8
+  velocidadAtaque: 3
