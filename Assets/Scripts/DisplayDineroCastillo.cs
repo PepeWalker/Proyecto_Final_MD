@@ -13,8 +13,6 @@ public class DisplayDineroCastillo : MonoBehaviour
     public TextMeshProUGUI textoNivel;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {
