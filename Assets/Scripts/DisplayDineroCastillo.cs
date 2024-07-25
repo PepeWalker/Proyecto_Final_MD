@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class DisplayDineroCastillo : MonoBehaviour
 {
-    public GameObject castilloOBJ;
-    public Castillo castilloScript;  
-    public TextMeshProUGUI textoOro, textoOroFondo;
-    public TextMeshProUGUI textoNivel;
+
+    public Castillo castilloScriptJugador, CastillosSctiptEnemigo;  
+    public TextMeshProUGUI textoOroJugador, textoOroFondoJugador, textoOroEnemigo, textoOroFondoEnemigo;
+    public TextMeshProUGUI textoNivelJugador, textoNivelEnemigo;
 
 
     // Start is called before the first frame update
@@ -23,8 +23,14 @@ public class DisplayDineroCastillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoOro.text = castilloScript.oro.ToString();
-        textoOroFondo.text = textoOro.text;
-        textoNivel.text = castilloScript.nivel.ToString();
+        textoOroJugador.text = castilloScriptJugador.oro.ToString();
+        textoOroFondoJugador.text = textoOroJugador.text;
+        textoNivelJugador.text = castilloScriptJugador.nivel.ToString();
+
+
+        textoOroEnemigo.text = CastillosSctiptEnemigo.oro.ToString();
+        textoOroFondoEnemigo.text = textoOroEnemigo.text;
+        textoNivelEnemigo.text = CastillosSctiptEnemigo.nivel.ToString();
+    
     }
 }
