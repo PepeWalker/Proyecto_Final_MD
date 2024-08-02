@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1841768734917025640
+--- !u!1001 &1649664493953136236
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -68,15 +68,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
---- !u!4 &5814624457472036036 stripped
+--- !u!198 &8686310107578018970 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7957631948970793718, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+  m_PrefabInstance: {fileID: 1649664493953136236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9219319283762824067 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5277924966221550508, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
-  m_PrefabInstance: {fileID: 1841768734917025640}
+  m_CorrespondingSourceObject: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+  m_PrefabInstance: {fileID: 1649664493953136236}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7214696546167532976
 PrefabInstance:
@@ -406,8 +423,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 5814624457472036036}
+      insertIndex: -1
+      addedObject: {fileID: 9219319283762824067}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
       insertIndex: -1
@@ -455,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datosUnidad: {fileID: 11400000, guid: 35415763e1677644387a6f6dcdce0c3f, type: 2}
+  particulasDanio: {fileID: 8686310107578018970}
   vida: 0
   vidaMax: 0
   ataque: 0
@@ -466,7 +484,7 @@ MonoBehaviour:
   coste: 0
   esJugador: 0
   target: {fileID: 0}
-  origenSpawn: {x: 0, y: -0.8, z: 33}
+  origenSpawn: {x: 0, y: -0.8, z: -28}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
   estadoActual: 0

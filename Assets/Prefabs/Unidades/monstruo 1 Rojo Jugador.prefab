@@ -68,14 +68,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
---- !u!4 &6906900972059731392 stripped
+--- !u!198 &8686310107578018970 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7957631948970793718, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+  m_PrefabInstance: {fileID: 1649664493953136236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9219319283762824067 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5277924966221550508, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7572049707064702447, guid: 97c96ca5ed6a36844832e76344d94275, type: 3}
   m_PrefabInstance: {fileID: 1649664493953136236}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7214696546167532976
@@ -406,8 +423,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 6906900972059731392}
+      insertIndex: -1
+      addedObject: {fileID: 9219319283762824067}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 07a836c40a7fe184396ffbde686d1003, type: 3}
       insertIndex: -1
@@ -455,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datosUnidad: {fileID: 11400000, guid: 354a89e30f0672d4790e1247d8a9be46, type: 2}
+  particulasDanio: {fileID: 8686310107578018970}
   vida: 0
   vidaMax: 0
   ataque: 0

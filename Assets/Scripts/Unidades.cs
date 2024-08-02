@@ -7,6 +7,8 @@ public class Unidades : MonoBehaviour
 {
     public DatosUnidad datosUnidad;
 
+    public ParticleSystem particulasDanio;
+
 
     public float vida, vidaMax, ataque, defensa, velocidad, alcance, velocidadAtaque, distanciaAlObjetivo;
 
@@ -280,6 +282,7 @@ public class Unidades : MonoBehaviour
 
         Debug.Log($"{gameObject.name} recibiendo daño: {danio}");
 
+
         puedeRecibirDanio = false;
         recibiendoAtaque = true;
 
@@ -381,6 +384,7 @@ public class Unidades : MonoBehaviour
         puedeRecibirDanio = false;
 
         anim.SetTrigger("RecibiendoAtaque");
+        particulasDanio.Play();
 
         Debug.Log($"{gameObject.name} esta recibiendo un Ataque!");
         // Esperar a que la animación termine
