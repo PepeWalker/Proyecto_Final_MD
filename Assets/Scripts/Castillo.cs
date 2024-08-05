@@ -34,7 +34,7 @@ public class Castillo : Unidades
             //para debug
             if (tiposDeUnidades[i] == null || tiposDeUnidades[i].prefab == null)
             {
-                Debug.LogError($"el tipo de unidad en el índice {i} es null.");
+                //Debug.LogError($"el tipo de unidad en el índice {i} es null.");
                 continue;
             }
 
