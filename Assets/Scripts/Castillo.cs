@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Castillo : Unidades
 {
@@ -70,6 +71,70 @@ public class Castillo : Unidades
     {
        
     }
+
+    //funcion para genear unidad en funcion del i introducido.
+    //Será por boton en canvas
+    public void GenerarUnidad(Button b)
+    {
+        int i = 0;
+        switch (b.transform.name)
+        {
+            case "UnidadEnemigo 0": 
+                i = 0;
+                break;
+            case "UnidadEnemigo 1":
+                i = 1;
+                break;
+            case "UnidadEnemigo 2":
+                i = 2;
+                break;
+            case "Unidad 0":
+                i = 0;
+                break;
+            case "Unidad 1":
+                i = 1;
+                break;
+            case "Unidad 2":
+                i = 2;
+                break;
+        }
+
+
+
+        if (lUnidadesActivas.Count < limiteUnidad && oro >= tiposDeUnidades[i].coste)
+        {
+            //rotacion basada en si es jugador o enemigo
+            Quaternion rotacion = esJugador ? Quaternion.Euler(0, -90, 0) : Quaternion.Euler(0, 90, 0);
+
+            //posicion de spawnpoint
+            Vector3 posicion = spawnPoint.position;
+
+            Unidades unidad = Instantiate(tiposDeUnidades[i].prefab, posicion, rotacion).GetComponent<Unidades>();
+            unidad.datosUnidad = tiposDeUnidades[i];
+            unidad.ResetearUnidad();
+            lUnidadesActivas.Add(unidad.gameObject);
+            decreaseGold(tiposDeUnidades[i].coste);
+
+            Debug.Log($"Unidad generada en posición: {posicion}, rotación: {rotacion.eulerAngles}");
+
+            b.GetComponent<ButtonCooldown>().OnButtonPressCooldown();
+            b.interactable = false;
+
+
+
+        }
+        else
+        {
+            //Si has alcancedo limite de unidades
+            Debug.Log(lUnidadesActivas.Count >= limiteUnidad ? "Máximo de unidades alcanzado." : "Oro insuficiente.");
+
+        }
+
+  
+
+
+    }
+
 
 
     //funcion para genear unidad en funcion del i introducido.
