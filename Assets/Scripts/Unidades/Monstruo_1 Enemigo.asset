@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c40fc35ae554e459b50742f688dfeb, type: 3}
   m_Name: Monstruo_1 Enemigo
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7203524746637675533, guid: a256483a8865b364eb51afbf22f9c103, type: 3}
-  coste: 50
+  prefab: {fileID: 7203524746637675533, guid: d204374f3c0f79b48b806544d357c552, type: 3}
+  coste: 25
   vidaMax: 50
   ataque: 5
   defensa: 0

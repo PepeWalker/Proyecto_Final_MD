@@ -55,6 +55,7 @@ public class Unidades : MonoBehaviour
 
         float RandomBonus() => Random.Range(0f, 2f);
 
+        coste = datosUnidad.coste;
         vida = datosUnidad.vidaMax;
         ataque = datosUnidad.ataque ;
         defensa = datosUnidad.defensa;

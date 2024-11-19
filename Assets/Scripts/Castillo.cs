@@ -100,6 +100,11 @@ public class Castillo : Unidades
         }
 
 
+        Debug.Log(tiposDeUnidades[i].coste);
+
+       
+
+
 
         if (lUnidadesActivas.Count < limiteUnidad && oro >= tiposDeUnidades[i].coste)
         {
@@ -109,7 +114,9 @@ public class Castillo : Unidades
             //posicion de spawnpoint
             Vector3 posicion = spawnPoint.position;
 
+            Debug.Log(i);
             Unidades unidad = Instantiate(tiposDeUnidades[i].prefab, posicion, rotacion).GetComponent<Unidades>();
+            
             unidad.datosUnidad = tiposDeUnidades[i];
             unidad.ResetearUnidad();
             lUnidadesActivas.Add(unidad.gameObject);
@@ -119,7 +126,6 @@ public class Castillo : Unidades
 
             b.GetComponent<ButtonCooldown>().OnButtonPressCooldown();
             b.interactable = false;
-
 
 
         }

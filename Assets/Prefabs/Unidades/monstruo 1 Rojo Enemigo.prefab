@@ -481,10 +481,10 @@ MonoBehaviour:
   alcance: 0
   velocidadAtaque: 0
   distanciaAlObjetivo: 0
-  coste: 0
+  coste: 1
   esJugador: 0
   target: {fileID: 0}
-  origenSpawn: {x: 0, y: -0.9, z: -28}
+  origenSpawn: {x: 0, y: -0.8, z: 33}
   direction: {x: 0, y: 0, z: 1}
   rayCastLenght: 0
   estadoActual: 0
