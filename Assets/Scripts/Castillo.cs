@@ -188,6 +188,7 @@ public class Castillo : Unidades
     {
         return oro;
     }
+
     public void increaseGold (float x) {oro += x;}
 
     public void decreaseGold (float x) {oro -= x;}
