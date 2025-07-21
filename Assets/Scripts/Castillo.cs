@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Castillo : Unidades
@@ -26,7 +27,8 @@ public class Castillo : Unidades
 
     public List<DatosUnidad> tiposDeUnidades;
     private Dictionary<System.Type, Queue <Unidades>>unidadesPool;
-   
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +77,7 @@ public class Castillo : Unidades
     // Update is called once per frame
      void Update()
     {
-       
+        if (this.vida <= 0) GameOver();
     }
 
     //funcion para genear unidad en funcion del i introducido.
@@ -240,7 +242,7 @@ public class Castillo : Unidades
     private void GameOver()
     {
         Debug.Log(esJugador ? "¡Has perdido!" : "¡Has ganado!");
-
+        Debug.Log(esJugador ? "¡Has perdido!" : "¡Has ganado!");
         //  añadir mas cosas para finalizar el juego
         //  mostrar una pantalla de fin de juego, detener la generación de unidades, etc.. no se que mas podria poner.
     }

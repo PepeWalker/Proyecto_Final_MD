@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Monstruo_1 Enemigo
   m_EditorClassIdentifier: 
   prefab: {fileID: 7203524746637675533, guid: d204374f3c0f79b48b806544d357c552, type: 3}
-  coste: 25
+  coste: 50
   vidaMax: 50
   ataque: 5
   defensa: 0
   velocidad: 3
   alcance: 4
-  velocidadAtaque: 4
+  velocidadAtaque: 3.5
