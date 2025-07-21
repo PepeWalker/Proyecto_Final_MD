@@ -62,6 +62,9 @@ TagManager:
   - name: Mosntruo Azul
     uniqueID: 1967881145
     locked: 0
+  - name: Castillo
+    uniqueID: 1699281805
+    locked: 0
   - name: Props_delante
     uniqueID: 965366203
     locked: 0

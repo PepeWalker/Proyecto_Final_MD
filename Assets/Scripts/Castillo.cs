@@ -7,7 +7,14 @@ using UnityEngine.UI;
 public class Castillo : Unidades
 {
     public int nivel, limiteUnidad;
-    public float oro;
+    
+    public float oro
+    {
+        get { return _oro; }
+        set { _oro = value; }
+    }
+
+    [SerializeField] private float _oro;
 
     public Transform spawnPoint;
 
@@ -19,7 +26,6 @@ public class Castillo : Unidades
 
     public List<DatosUnidad> tiposDeUnidades;
     private Dictionary<System.Type, Queue <Unidades>>unidadesPool;
-
    
 
     // Start is called before the first frame update
@@ -189,9 +195,15 @@ public class Castillo : Unidades
         return oro;
     }
 
-    public void increaseGold (float x) {oro += x;}
+    public void increaseGold (float x) {
+        oro += x;
+        DisplayDineroCastillo.instance.UpdateTextsC(this);
+    }
 
-    public void decreaseGold (float x) {oro -= x;}
+    public void decreaseGold (float x) {
+        oro -= x;
+        DisplayDineroCastillo.instance.UpdateTextsC(this);
+    }
 
 
 
@@ -206,7 +218,7 @@ public class Castillo : Unidades
         {
             nivel++;
             limiteUnidad += 5;
-            oro -= 100;
+            decreaseGold(100);
             Debug.Log("Subido nivel de castillo");
         }
         else
@@ -216,7 +228,7 @@ public class Castillo : Unidades
 
     public override void RecibirAtaque(float danio)
     {
-
+         
         float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
         vida -= danioDespuesDefensa;
 

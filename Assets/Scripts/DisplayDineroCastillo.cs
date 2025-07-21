@@ -7,30 +7,55 @@ using UnityEngine.UI;
 
 public class DisplayDineroCastillo : MonoBehaviour
 {
-
-    public Castillo castilloScriptJugador, CastillosSctiptEnemigo;  
+    public static DisplayDineroCastillo instance;   
     public TextMeshProUGUI textoOroJugador, textoOroFondoJugador, textoOroEnemigo, textoOroFondoEnemigo;
     public TextMeshProUGUI textoNivelJugador, textoNivelEnemigo;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-
+        if (DisplayDineroCastillo.instance == null)
+        {
+            instance = this;
+        }
+        else { 
+        Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    //Actualziar textos ambos castillos
+    public void UpdateTexts (Castillo cJ, Castillo cE)
     {
-        textoOroJugador.text = castilloScriptJugador.oro.ToString();
+        textoOroJugador.text = cJ.oro.ToString();
         textoOroFondoJugador.text = textoOroJugador.text;
-        textoNivelJugador.text = castilloScriptJugador.nivel.ToString();
+        textoNivelJugador.text = cJ.nivel.ToString();
 
 
-        textoOroEnemigo.text = CastillosSctiptEnemigo.oro.ToString();
+        textoOroEnemigo.text = cE.oro.ToString();
         textoOroFondoEnemigo.text = textoOroEnemigo.text;
-        textoNivelEnemigo.text = CastillosSctiptEnemigo.nivel.ToString();
-    
+        textoNivelEnemigo.text = cE.nivel.ToString();
     }
+
+    //Actualizar textos solo un texto
+    public void UpdateTextsC(Castillo c)
+    {
+        if (c.esJugador)
+        {
+            textoOroJugador.text = c.oro.ToString();
+            textoOroFondoJugador.text = textoOroJugador.text;
+            textoNivelJugador.text = c.nivel.ToString();
+        }
+        else
+        {
+
+            textoOroEnemigo.text = c.oro.ToString();
+            textoOroFondoEnemigo.text = textoOroEnemigo.text;
+            textoNivelEnemigo.text = c.nivel.ToString();
+        }
+
+
+       
+
+    }
+
 }

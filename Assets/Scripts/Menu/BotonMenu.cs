@@ -140,12 +140,14 @@ public class BotonMenu : MonoBehaviour
 
         while (t < strikeOutTime)
         {
-            t += Time.deltaTime * 0.03f;
+            t += Time.deltaTime * 0.01f;
             float smoothValue = Mathf.Lerp(0f, 1f, t / strikeOutTime);
             i.fillAmount = smoothValue;
+            yield return null;
         }
-        t = 0;
-        
+
+        i.fillAmount = 1f;
+
         yield return new WaitForSeconds(strikeOutTime+1);
 
 
