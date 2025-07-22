@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,14 +8,22 @@ using UnityEngine.UI;
 
 public class Castillo : Unidades
 {
+
+    //Canvas para GameOver
+    public GameObject canvasGameOver;
+    public GameObject canvasJuego;
+
+
+    public TextMeshProUGUI textUINivelCastillo;
+
+    public MotorBatalla motorBatalla;
+
     public int nivel, limiteUnidad;
-    
     public float oro
     {
         get { return _oro; }
         set { _oro = value; }
     }
-
     [SerializeField] private float _oro;
 
     public Transform spawnPoint;
@@ -29,10 +38,14 @@ public class Castillo : Unidades
     private Dictionary<System.Type, Queue <Unidades>>unidadesPool;
 
 
+    private bool _juegoTerminado = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        textUINivelCastillo.text = nivel.ToString();
+
+
         unidadesPool = new Dictionary<System.Type, Queue<Unidades>>();
 
 
@@ -77,7 +90,61 @@ public class Castillo : Unidades
     // Update is called once per frame
      void Update()
     {
-        if (this.vida <= 0) GameOver();
+        VerificarGameOver();
+    }
+
+    //Verifica la vida del castillo para terminar partida
+    private void VerificarGameOver()
+    {
+        if (vida <= 0 && !_juegoTerminado)
+        {
+            _juegoTerminado = true;
+            ActivarGameOver();
+        }
+    }
+
+    //Si la vida del castilloo o juegoTerminado empieza logica para terminar partida
+    private void ActivarGameOver()
+    {
+        try
+        {
+            // Desactivar el canvas del juego
+            if (canvasJuego != null)
+            {
+                canvasJuego.SetActive(false);
+                Debug.Log("CanvasJuego desactivado");
+            }
+            else
+            {
+                Debug.LogWarning("CanvasJuego no está asignado en el Inspector");
+            }
+
+            // Activar el canvas de GameOver
+            if (canvasGameOver != null)
+            {
+                canvasGameOver.SetActive(true);
+                Debug.Log("Canvas de Game Over activado");
+
+                // pausar el juego=??? 
+                //Lo activo pero no se si necesario porque tapo la escen con un panel del canvas
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Debug.LogError("CanvasGameOver no está asignado en el Inspector");
+            }
+
+            // Notificar a motorBatalla que termina partida
+            if (motorBatalla != null)
+            {
+                
+                motorBatalla.OnCastilloDestruido();
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error al activar Game Over: {e.Message}");
+        }
     }
 
     //funcion para genear unidad en funcion del i introducido.
@@ -216,12 +283,13 @@ public class Castillo : Unidades
     public void levelUp()
     {
         
-        if (oro>= 100)
+        if (oro>= 50)
         {
             nivel++;
             limiteUnidad += 5;
-            decreaseGold(100);
+            decreaseGold(50);
             Debug.Log("Subido nivel de castillo");
+            textUINivelCastillo.text = nivel.ToString();
         }
         else
             Debug.Log("No suficiente oro.");
@@ -234,18 +302,9 @@ public class Castillo : Unidades
         float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
         vida -= danioDespuesDefensa;
 
-        if (isDeath())
-        {
-            GameOver();
-        }
+        
     }
-    private void GameOver()
-    {
-        Debug.Log(esJugador ? "¡Has perdido!" : "¡Has ganado!");
-        Debug.Log(esJugador ? "¡Has perdido!" : "¡Has ganado!");
-        //  añadir mas cosas para finalizar el juego
-        //  mostrar una pantalla de fin de juego, detener la generación de unidades, etc.. no se que mas podria poner.
-    }
+    
 
 
 

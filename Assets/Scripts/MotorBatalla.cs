@@ -10,7 +10,7 @@ public class MotorBatalla : MonoBehaviour
 
    
 
-    public int nivelCastilloMax; //predefinir cual será el nivel maximo por partida
+    public int nivelCastilloMax=10; //predefinir cual será el nivel maximo por partida
 
     public Castillo castilloEnemigo, castilloJugador;
 
@@ -19,6 +19,11 @@ public class MotorBatalla : MonoBehaviour
     public float delayAmount = 5.0f; //delay del oro que se genera
     protected float timer;
 
+    //Canvas GameOvers
+    public GameObject canvasGameOver;
+    public GameObject canvasJuego;
+
+    [SerializeField] private bool _juegoTerminado = false;
 
    // Start is called before the first frame update
    void Start()
@@ -55,23 +60,26 @@ public class MotorBatalla : MonoBehaviour
     void Update()
     {
 
-        //Tiempo para aumento de oro
-        AumentoOro();
-
-        //subir nivel
-        if (Input.GetKeyDown("q"))
+        if (!_juegoTerminado)
         {
-            LevelUpCastillo(castilloJugador);
+
+            //Tiempo para aumento de oro
+            AumentoOro();
+
+            //subir nivel
+            if (Input.GetKeyDown("q"))
+            {
+                LevelUpCastillo(castilloJugador);
+            }
+
         }
 
+    }
 
+    public void OnCastilloDestruido()
+    {
 
-        //Para generar unidad,
-        // FALTA AÑADIR que al pulsar el boton esté deshabilitado X tiempo de cooldown
-
-      
-
-
+        _juegoTerminado = true;
 
     }
 
