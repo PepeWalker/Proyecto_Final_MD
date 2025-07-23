@@ -122,9 +122,7 @@ public class BotonMenu : MonoBehaviour
 
     public void PlayGame(Image i)
     {
-        //cambia escena al en buildsettings, el indice 1, por ahora escena batalla
-        Debug.Log("Cambiando a escena Indice 1");
-
+        
         StartCoroutine(ICorrCambioEscenaJuego(i));
     }
 
@@ -140,7 +138,7 @@ public class BotonMenu : MonoBehaviour
 
         while (t < strikeOutTime)
         {
-            t += Time.deltaTime * 0.01f;
+            t += Time.deltaTime * 1.0f;
             float smoothValue = Mathf.Lerp(0f, 1f, t / strikeOutTime);
             i.fillAmount = smoothValue;
             yield return null;

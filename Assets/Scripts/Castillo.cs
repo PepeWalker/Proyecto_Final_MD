@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Castillo : Unidades
 {
@@ -13,10 +14,14 @@ public class Castillo : Unidades
     public GameObject canvasGameOver;
     public GameObject canvasJuego;
 
+    [SerializeField] private UnityEngine.UI.Slider _slider;
 
     public TextMeshProUGUI textUINivelCastillo;
 
     public MotorBatalla motorBatalla;
+
+
+    
 
     public int nivel, limiteUnidad;
     public float oro
@@ -40,9 +45,18 @@ public class Castillo : Unidades
 
     private bool _juegoTerminado = false;
 
+    private void Awake()
+    {
+        _slider.value = vida;
+        _slider.maxValue = vidaMax;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
+
         textUINivelCastillo.text = nivel.ToString();
 
 
@@ -86,11 +100,13 @@ public class Castillo : Unidades
 
     }
 
+    
 
     // Update is called once per frame
      void Update()
     {
         VerificarGameOver();
+
     }
 
     //Verifica la vida del castillo para terminar partida
@@ -129,6 +145,7 @@ public class Castillo : Unidades
                 //Lo activo pero no se si necesario porque tapo la escen con un panel del canvas
                 Time.timeScale = 0f;
             }
+
             else
             {
                 Debug.LogError("CanvasGameOver no está asignado en el Inspector");
@@ -149,7 +166,7 @@ public class Castillo : Unidades
 
     //funcion para genear unidad en funcion del i introducido.
     //Será por boton en canvas
-    public void GenerarUnidad(Button b)
+    public void GenerarUnidad(UnityEngine.UI.Button b)
     {
         int i = 0;
         switch (b.transform.name)
@@ -302,6 +319,7 @@ public class Castillo : Unidades
         float danioDespuesDefensa = Mathf.Max(0, danio - defensa);
         vida -= danioDespuesDefensa;
 
+        _slider.value = vida;
         
     }
     

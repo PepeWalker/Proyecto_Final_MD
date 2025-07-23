@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7203524746637675533, guid: d204374f3c0f79b48b806544d357c552, type: 3}
   coste: 50
-  vidaMax: 50
-  ataque: 5
+  vidaMax: 40
+  ataque: 10
   defensa: 0
   velocidad: 3
   alcance: 4
